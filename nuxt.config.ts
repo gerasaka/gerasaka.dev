@@ -5,5 +5,5 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-04-03",
   devtools: { enabled: true },
   srcDir: "app/",
-  modules: ['@nuxt/eslint', "@nuxt/fonts"],
+  modules: ['@nuxt/eslint', "@nuxt/fonts", "@nuxtjs/tailwindcss"],
 });
