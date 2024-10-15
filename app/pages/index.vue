@@ -1,14 +1,16 @@
-<script lang="ts" setup>
-const x = [1, 2, 3, 4, 5, 6];
-</script>
-
 <template>
   <div>
-    <span>hello you</span>
-          <h1>wow i can be formatted</h1>
+    <IconLogo />
+
+    <h1>Gerry Julio</h1>
+    <p>Frontend Engineer</p>
+
+    <div>
+      <IconLinkedin />
+      <IconGithub />
+      <IconX />
+      <IconLeetcode />
+      <IconMail />
+    </div>
   </div>
 </template>
-
-<style>
-
-</style>
