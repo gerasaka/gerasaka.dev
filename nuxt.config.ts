@@ -40,4 +40,12 @@ export default defineNuxtConfig({
   image: {
     dir: 'assets/images',
   },
+  icon: {
+    customCollections: [
+      {
+        prefix: 'grsk',
+        dir: './app/assets/icons',
+      },
+    ],
+  },
 });
