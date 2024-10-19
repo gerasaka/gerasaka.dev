@@ -2,9 +2,10 @@
 import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt({
-  files: ['app/**/*.ts', 'app/**/*.ts'],
+  files: ['**/*.ts', '**/*.vue'],
   rules: {
     'no-console': 'warn',
     'vue/multi-word-component-names': 'off',
+    'vue/html-self-closing': 'off',
   },
 });
