@@ -1,5 +1,7 @@
 <script lang="ts" setup>
   import { useFavicon } from '@vueuse/core';
+  import '~/assets/misc/oneko';
+  import '~/assets/misc/ascii-art';
 
   useFavicon().value = '/favicon-light.ico';
 </script>
@@ -18,10 +20,10 @@
       class="absolute top-0 right-0"
     />
 
-    <div class="flex flex-col justify-center h-4/6 mx-auto px-8 md:px-20 lg:px-32 lg:max-w-5xl">
+    <div class="flex flex-col justify-center h-5/6 mx-auto px-8 md:px-20 lg:px-32 lg:max-w-5xl">
       <Icon name="grsk:logo" class="w-20 h-20" />
 
-      <h1 class="text-dark font-serif font-extrabold text-6xl mt-16 md:mt-32">Gerry Julio</h1>
+      <h1 class="text-dark font-serif font-extrabold text-6xl mt-16 md:mt-24">Gerry Julio</h1>
       <p class="text-light text-2xl mt-4">Frontend Engineer</p>
 
       <div class="flex items-center gap-4 mt-8 md:mt-12 text-dark">
