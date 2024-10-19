@@ -1,8 +1,8 @@
-import { defineNuxtConfig } from "nuxt/config";
+import { defineNuxtConfig } from 'nuxt/config';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: "2024-04-03",
+  compatibilityDate: '2024-04-03',
   future: {
     compatibilityVersion: 4,
   },
@@ -25,9 +25,9 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  modules: ["@nuxt/eslint", "@nuxt/fonts", "@nuxtjs/tailwindcss"],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxtjs/tailwindcss'],
   tailwindcss: {
-    cssPath: ["~/assets/styles/tailwind.css", { injectPosition: "first" }],
-    configPath: "~~/tailwind.config",
+    cssPath: ['~/assets/styles/index.scss', { injectPosition: 'first' }],
+    configPath: '~~/tailwind.config',
   },
 });
