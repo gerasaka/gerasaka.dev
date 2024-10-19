@@ -25,7 +25,13 @@ export default defineNuxtConfig({
     },
   },
   devtools: { enabled: true },
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxtjs/tailwindcss', '@nuxt/image'],
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/fonts',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/image',
+    '@vueuse/nuxt',
+  ],
   tailwindcss: {
     cssPath: ['~/assets/styles/index.scss', { injectPosition: 'first' }],
     configPath: '~~/tailwind.config',
