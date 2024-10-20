@@ -1,0 +1,17 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "files.associations": {
+    "*.scss": "tailwindcss",
+    "*.css": "tailwindcss"
+  },
+  "prettier.printWidth": 100,
+  "prettier.singleQuote": true,
+  "prettier.vueIndentScriptAndStyle": true,
+  "prettier.endOfLine": "lf",
+  "prettier.arrowParens": "always",
+  "prettier.bracketSpacing": true,
+  "prettier.semi": true,
+  "prettier.tabWidth": 2,
+  "css.customData": [".vscode/tailwind.json"]
+}
