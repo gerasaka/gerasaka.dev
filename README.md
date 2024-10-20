@@ -1,75 +1,51 @@
-# Nuxt 3 Minimal Starter
+# Personal Website
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Welcome to my [personal website](https://gerasaka.dev) repository! This website serves as my digital portfolio and personal space on the internet.
 
-## Setup
+## 🏞️ Preview
 
-Make sure to install the dependencies:
+![page preview](/public/preview.png)
+
+## 🛠️ Technologies Used
+
+- Built with [Nuxt](https://nuxt.com/) <img src="https://skillicons.dev/icons?i=nuxt" width="20">
+- Written in [Vue](https://vuejs.org/) + Typescript <img src="https://skillicons.dev/icons?i=vue,typescript" width="42">
+- Styles with [Tailwind CSS](https://tailwindcss.com/) + Sass <img src="https://skillicons.dev/icons?i=tailwind,sass" width="42" />
+- Hosted on CloudFlare with NuxtHub <img src="https://skillicons.dev/icons?i=cloudflare" width="20" />
+
+## 🚀 Run on local
+
+### Prerequisites
 
 ```bash
-# npm
-npm install
+node.js v18+
+pnpm
+```
 
-# pnpm
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/gerasaka/gerasaka.dev.git
+cd gerasaka.dev
+
+# Install dependencies
 pnpm install
 
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
+# Start development server
 pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Open your browser and navigate to `http://localhost:3000`
 
-Build the application for production:
+## 📝 Contributing
 
-```bash
-# npm
-npm run build
+While this is a personal website, I'm open to suggestions and improvements! Feel free to create an issue or make a pull request.
 
-# pnpm
-pnpm run build
+## 📜 License
 
-# yarn
-yarn build
+This project is licensed under the GNU License - see the [LICENSE.md](LICENSE.md) file for details.
 
-# bun
-bun run build
-```
+---
 
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Made with a cat playing on my feet 🐈
