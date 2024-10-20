@@ -10,7 +10,7 @@ Welcome to my [personal website](https://gerasaka.dev) repository! This website 
 
 - Built with [Nuxt](https://nuxt.com/) <img src="https://skillicons.dev/icons?i=nuxt" width="20">
 - Written in [Vue](https://vuejs.org/) + Typescript <img src="https://skillicons.dev/icons?i=vue,typescript" width="42">
-- Styles with [Tailwind CSS](https://tailwindcss.com/) + Sass <img src="https://skillicons.dev/icons?i=tailwind,sass" width="42" />
+- Styled with [Tailwind CSS](https://tailwindcss.com/) + Sass <img src="https://skillicons.dev/icons?i=tailwind,sass" width="42" />
 - Hosted on CloudFlare with NuxtHub <img src="https://skillicons.dev/icons?i=cloudflare" width="20" />
 
 ## 🚀 Run on local
@@ -18,22 +18,22 @@ Welcome to my [personal website](https://gerasaka.dev) repository! This website 
 ### Prerequisites
 
 ```bash
-node.js v18+
-pnpm
+$ node.js v18+
+$ pnpm
 ```
 
 ### Setup
 
 ```bash
 # Clone the repository
-git clone https://github.com/gerasaka/gerasaka.dev.git
-cd gerasaka.dev
+$ git clone https://github.com/gerasaka/gerasaka.dev.git
+$ cd gerasaka.dev
 
 # Install dependencies
-pnpm install
+$ pnpm install
 
 # Start development server
-pnpm run dev
+$ pnpm run dev
 ```
 
 Open your browser and navigate to `http://localhost:3000`
