@@ -1,9 +1,6 @@
 <script lang="ts" setup>
-  import { useFavicon } from '@vueuse/core';
   import { oneko } from '~/assets/misc/oneko';
   import '~/assets/misc/ascii-art';
-
-  useFavicon().value = '/favicon-light.ico';
 
   onMounted(() => oneko());
 </script>
