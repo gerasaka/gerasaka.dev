@@ -1,9 +1,11 @@
 <script lang="ts" setup>
   import { useFavicon } from '@vueuse/core';
-  import '~/assets/misc/oneko';
+  import { oneko } from '~/assets/misc/oneko';
   import '~/assets/misc/ascii-art';
 
   useFavicon().value = '/favicon-light.ico';
+
+  onMounted(() => oneko());
 </script>
 
 <template>
@@ -27,20 +29,35 @@
       <p class="text-light text-2xl mt-4">Frontend Engineer</p>
 
       <div class="flex items-center gap-4 mt-8 md:mt-12 text-dark">
-        <NuxtLink to="https://github.com/gerasaka/">
-          <Icon name="simple-icons:github" class="w-6 h-6 hover:text-primary-500" />
+        <NuxtLink to="mailto:gerryjulioo@gmail.com">
+          <Icon
+            name="ph:envelope-fill"
+            class="transition-colors duration-300 w-7 h-7 hover:text-primary-500"
+          />
         </NuxtLink>
         <NuxtLink to="https://www.linkedin.com/in/gerryjulio/">
-          <Icon name="simple-icons:linkedin" class="w-6 h-6 hover:text-primary-500" />
+          <Icon
+            name="simple-icons:linkedin"
+            class="transition-colors duration-300 w-6 h-6 hover:text-primary-500"
+          />
+        </NuxtLink>
+        <NuxtLink to="https://github.com/gerasaka/">
+          <Icon
+            name="simple-icons:github"
+            class="transition-colors duration-300 w-6 h-6 hover:text-primary-500"
+          />
         </NuxtLink>
         <NuxtLink to="https://leetcode.com/u/gerasaka/">
-          <Icon name="simple-icons:leetcode" class="w-6 h-6 hover:text-primary-500" />
+          <Icon
+            name="simple-icons:leetcode"
+            class="transition-colors duration-300 w-6 h-6 hover:text-primary-500"
+          />
         </NuxtLink>
         <NuxtLink to="https://x.com/gerasaka/">
-          <Icon name="simple-icons:x" class="w-6 h-6 hover:text-primary-500" />
-        </NuxtLink>
-        <NuxtLink to="mailto:gerryjulioo@gmail.com">
-          <Icon name="ph:envelope-fill" class="w-7 h-7 hover:text-primary-500" />
+          <Icon
+            name="simple-icons:x"
+            class="transition-colors duration-300 w-6 h-6 hover:text-primary-500"
+          />
         </NuxtLink>
       </div>
     </div>
