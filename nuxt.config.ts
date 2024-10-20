@@ -32,6 +32,7 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxt/icon',
+    '@nuxthub/core',
   ],
   tailwindcss: {
     cssPath: ['~/assets/styles/index.scss', { injectPosition: 'first' }],
