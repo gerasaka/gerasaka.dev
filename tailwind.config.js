@@ -30,7 +30,7 @@ export default {
           900: '#1B393D',
           950: '#102225',
         },
-        base: '#F1F1F1',
+        background: '#F1F1F1',
         dark: '#222222',
         light: '#808080',
         'sepia-content': '#5F5033',
