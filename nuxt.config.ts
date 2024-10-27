@@ -34,6 +34,12 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxthub/core',
   ],
+  fonts: {
+    families: [
+      { name: 'Lato', provider: 'google', weights: [100, 300, 400, 700, 900] },
+      { name: 'Playfair Display', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
+    ],
+  },
   tailwindcss: {
     cssPath: ['~/assets/styles/index.scss', { injectPosition: 'first' }],
     configPath: '~~/tailwind.config',
