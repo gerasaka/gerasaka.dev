@@ -3,6 +3,30 @@
   import '~/assets/misc/ascii-art';
 
   onMounted(() => oneko());
+
+  useSeoMeta({
+    robots: 'index, follow',
+    title: 'Gerry Julio',
+    description:
+      'Software Engineer that currently on a mission to create immersive experiences through the web',
+
+    // Facebook Meta
+    ogUrl: 'https://gerasaka.dev/',
+    ogType: 'website',
+    ogTitle: 'Gerry Julio',
+    ogDescription:
+      'Software Engineer that currently on a mission to create immersive experiences through the web',
+    ogImage: 'https://gerasaka.dev/og-image.png',
+    ogImageAlt: 'Personal website of Gerry Julio',
+
+    // Twitter meta
+    twitterCard: 'summary_large_image',
+    twitterTitle: 'Gerry Julio',
+    twitterDescription:
+      'Software Engineer that currently on a mission to create immersive experiences through the web',
+    twitterImage: 'https://gerasaka.dev/og-image.png',
+    twitterImageAlt: 'Personal website of Gerry Julio',
+  });
 </script>
 
 <template>
