@@ -1,8 +1,5 @@
 <script lang="ts" setup>
-  import { oneko } from '~/assets/misc/oneko';
-  import '~/assets/misc/ascii-art';
-
-  onMounted(() => oneko());
+  import misc from '~/assets/misc';
 
   useSeoMeta({
     robots: 'index, follow',
@@ -27,6 +24,8 @@
     twitterImage: 'https://gerasaka.dev/og-image.png',
     twitterImageAlt: 'Personal website of Gerry Julio',
   });
+
+  onMounted(() => misc());
 </script>
 
 <template>
