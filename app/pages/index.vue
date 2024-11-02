@@ -49,7 +49,7 @@
 
       <div>
         <h1 class="heading">Gerry Julio</h1>
-        <p class="text-light font-light text-lg md:text-xl mt-2">Frontend Engineer</p>
+        <p class="text-light font-light text-xl mt-2">Frontend Engineer</p>
 
         <p class="text-dark text-base mt-10">
           I craft user-centric web experiences where form follows function, and focus on delivering
@@ -75,30 +75,35 @@
         <NuxtLink to="mailto:gerryjulioo@gmail.com">
           <Icon
             name="ph:envelope-fill"
+            aria-label="email"
             class="transition-colors duration-300 w-6 h-6 md:w-7 md:h-7 hover:text-dark"
           />
         </NuxtLink>
         <NuxtLink to="https://www.linkedin.com/in/gerryjulio/">
           <Icon
             name="simple-icons:linkedin"
+            aria-label="linkedin"
             class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
           />
         </NuxtLink>
         <NuxtLink to="https://github.com/gerasaka/">
           <Icon
             name="simple-icons:github"
+            aria-label="github"
             class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
           />
         </NuxtLink>
         <NuxtLink to="https://x.com/gerasaka/">
           <Icon
             name="simple-icons:x"
+            aria-label="x"
             class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
           />
         </NuxtLink>
         <NuxtLink to="https://leetcode.com/u/gerasaka/">
           <Icon
             name="simple-icons:leetcode"
+            aria-label="leetcode"
             class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
           />
         </NuxtLink>

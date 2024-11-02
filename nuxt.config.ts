@@ -34,6 +34,13 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxthub/core',
   ],
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+    },
+  },
   fonts: {
     families: [
       { name: 'Lato', provider: 'google', weights: [100, 300, 400, 700, 900] },
