@@ -1,0 +1,34 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', sans-serif;
+  --font-serif: 'Libre Bodoni', serif;
+  --font-mono: 'Cascadia Code', monospace;
+
+  --color-surface: #ffffff;
+  --color-foreground: #000000;
+  --color-muted: #737373;
+
+  --color-primary-50: #d9e7f7;
+  --color-primary-100: #c0d6f1;
+  --color-primary-200: #a0c2ea;
+  --color-primary-300: #81aee3;
+  --color-primary-400: #6299dc;
+  --color-primary-500: #4285d5;
+  --color-primary-600: #376fb1;
+  --color-primary-700: #2c598e;
+  --color-primary-800: #21436b;
+  --color-primary-900: #162c47;
+  --color-primary-950: #0d1b2b;
+}
+
+:root {
+  color-scheme: light;
+}
+
+@layer components {
+  .heading {
+    @apply font-serif font-bold text-5xl leading-16 inline-block mt-12 md:mt-20 text-transparent bg-clip-text bg-linear-to-r from-foreground from-30% via-primary-800 via-60% to-primary-500;
+  }
+}
