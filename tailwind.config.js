@@ -43,7 +43,7 @@ export default {
     },
     fontFamily: {
       sans: ['Lato', 'sans-serif'],
-      serif: ['Playfair Display', 'sefif'],
+      serif: ['Playfair Display', 'serif'],
       mono: ['Fira Code', 'monospace'],
     },
   },

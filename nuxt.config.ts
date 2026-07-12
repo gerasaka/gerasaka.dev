@@ -8,11 +8,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     sharedPrerenderData: false,
-    compileTemplate: true,
-    resetAsyncDataToUndefined: true,
-    templateUtils: true,
-    relativeWatchPaths: true,
-    // normalizeComponentNames: false,
     defaults: {
       useAsyncData: {
         deep: true,

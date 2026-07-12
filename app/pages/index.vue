@@ -38,6 +38,7 @@
       "
       sizes="(max-width: 640px) 100vw, (max-width: 1023px) 800px, 1000px"
       src="~/assets/images/sm.png"
+      alt=""
       role="presentation"
       class="absolute top-0 right-0"
     />
