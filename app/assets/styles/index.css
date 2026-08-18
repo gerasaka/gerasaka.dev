@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+@import './typography.css';
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', sans-serif;
@@ -8,7 +9,7 @@
 
   --color-surface: #ffffff;
   --color-foreground: #000000;
-  --color-muted: #737373;
+  --color-muted: #8a8a8a;
 
   --color-primary-50: #d9e7f7;
   --color-primary-100: #c0d6f1;
@@ -25,10 +26,4 @@
 
 :root {
   color-scheme: light;
-}
-
-@layer components {
-  .heading {
-    @apply font-serif font-bold text-5xl leading-16 inline-block mt-12 md:mt-20 text-transparent bg-clip-text bg-linear-to-r from-foreground from-30% via-primary-800 via-60% to-primary-500;
-  }
 }
