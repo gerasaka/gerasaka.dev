@@ -22,8 +22,25 @@
   --color-primary-800: #21436b;
   --color-primary-900: #162c47;
   --color-primary-950: #0d1b2b;
+
+  --ease-elegant: cubic-bezier(0.5, 1, 0.85, 1);
 }
 
 :root {
   color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
 }
