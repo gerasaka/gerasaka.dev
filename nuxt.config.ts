@@ -28,8 +28,10 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxt/icon',
     '@nuxt/content',
-    '@nuxthub/core',
   ],
+  nitro: {
+    preset: 'cloudflare-module',
+  },
   css: ['~/assets/styles/index.css'],
   vite: {
     plugins: [tailwindcss()],
