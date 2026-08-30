@@ -7,5 +7,6 @@ export default withNuxt({
     'no-console': 'warn',
     'vue/multi-word-component-names': 'off',
     'vue/html-self-closing': 'off',
+    'vue/script-indent': ['error', 2, { baseIndent: 1, switchCase: 1 }],
   },
 });

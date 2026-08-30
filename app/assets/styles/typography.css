@@ -1,0 +1,11 @@
+@utility text-title {
+  @apply font-serif font-bold text-5xl;
+}
+
+@utility text-subtitle {
+  @apply font-light italic text-xl text-muted;
+}
+
+@utility text-body {
+  @apply text-foreground;
+}

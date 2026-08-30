@@ -1,4 +1,5 @@
 import { defineNuxtConfig } from 'nuxt/config';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -8,11 +9,6 @@ export default defineNuxtConfig({
   },
   experimental: {
     sharedPrerenderData: false,
-    compileTemplate: true,
-    resetAsyncDataToUndefined: true,
-    templateUtils: true,
-    relativeWatchPaths: true,
-    // normalizeComponentNames: false,
     defaults: {
       useAsyncData: {
         deep: true,
@@ -28,21 +24,44 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     '@nuxt/fonts',
-    '@nuxtjs/tailwindcss',
     '@nuxt/image',
     '@vueuse/nuxt',
     '@nuxt/icon',
-    '@nuxthub/core',
+    '@nuxt/content',
   ],
+  nitro: {
+    preset: 'cloudflare-module',
+  },
+  css: ['~/assets/styles/index.css'],
+  vite: {
+    plugins: [tailwindcss()],
+  },
+  content: {
+    build: {
+      markdown: {
+        highlight: {
+          theme: 'github-dark',
+        },
+      },
+    },
+  },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'en',
+      },
+    },
+  },
   fonts: {
     families: [
-      { name: 'Lato', provider: 'google', weights: [100, 300, 400, 700, 900] },
-      { name: 'Playfair Display', provider: 'google', weights: [400, 500, 600, 700, 800, 900] },
+      {
+        name: 'Plus Jakarta Sans',
+        provider: 'google',
+        weights: [200, 300, 400, 500, 600, 700, 800],
+      },
+      { name: 'Libre Bodoni', provider: 'google', weights: [400, 500, 600, 700] },
+      { name: 'Cascadia Code', provider: 'google', weights: [400, 700] },
     ],
-  },
-  tailwindcss: {
-    cssPath: ['~/assets/styles/index.scss', { injectPosition: 'first' }],
-    configPath: '~~/tailwind.config',
   },
   image: {
     dir: 'assets/images',

@@ -1,114 +1,141 @@
 <script lang="ts" setup>
-  import misc from '~/assets/misc';
+  const title = 'Gerry Julio — Software Engineer';
+  const description =
+    'Software Engineer turning ideas into immersive web experiences. Blending thoughtful design with solid engineering.';
+  const ogImage = 'https://gerasaka.dev/og-image.png';
+  const ogImageAlt = 'Personal website of Gerry Julio';
+  const socials = [
+    {
+      label: 'email',
+      url: 'mailto:gerryjulioo@gmail.com',
+      icon: 'grsk:mail',
+      color: 'hover:text-[#909692]',
+    },
+    {
+      label: 'linkedin',
+      url: 'https://www.linkedin.com/in/gerryjulio/',
+      icon: 'grsk:linkedin',
+      color: 'hover:text-[#0077B5]',
+    },
+    {
+      label: 'github',
+      url: 'https://github.com/gerasaka/',
+      icon: 'grsk:github',
+      color: 'hover:text-[#181717]',
+    },
+    {
+      label: 'bluesky',
+      url: 'https://bsky.app/profile/gerasaka.dev',
+      icon: 'grsk:bluesky',
+      color: 'hover:text-[#1185FE]',
+    },
+    {
+      label: 'x',
+      url: 'https://x.com/gerasaka/',
+      icon: 'grsk:x-square',
+      color: 'hover:text-[#000000]',
+    },
+  ];
 
   useSeoMeta({
     robots: 'index, follow',
-    title: 'Gerry Julio',
-    description:
-      'Software Engineer that currently on a mission to create immersive experiences through the web',
+    title,
+    description,
 
-    // Facebook Meta
+    // Open Graph
     ogUrl: 'https://gerasaka.dev/',
     ogType: 'website',
-    ogTitle: 'Gerry Julio',
-    ogDescription:
-      'Software Engineer that currently on a mission to create immersive experiences through the web',
-    ogImage: 'https://gerasaka.dev/og-image.png',
-    ogImageAlt: 'Personal website of Gerry Julio',
+    ogSiteName: 'Gerry Julio',
+    ogLocale: 'en_US',
+    ogTitle: title,
+    ogDescription: description,
+    ogImage,
+    ogImageWidth: 1200,
+    ogImageHeight: 630,
+    ogImageAlt,
 
-    // Twitter meta
+    // Twitter
     twitterCard: 'summary_large_image',
-    twitterTitle: 'Gerry Julio',
-    twitterDescription:
-      'Software Engineer that currently on a mission to create immersive experiences through the web',
-    twitterImage: 'https://gerasaka.dev/og-image.png',
-    twitterImageAlt: 'Personal website of Gerry Julio',
+    twitterSite: '@gerasaka',
+    twitterCreator: '@gerasaka',
+    twitterTitle: title,
+    twitterDescription: description,
+    twitterImage: ogImage,
+    twitterImageAlt: ogImageAlt,
   });
 
-  onMounted(() => misc());
+  useHead({
+    script: [
+      {
+        type: 'application/ld+json',
+        innerHTML: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Gerry Julio',
+          url: 'https://gerasaka.dev/',
+          jobTitle: 'Software Engineer',
+          description,
+          sameAs: socials.filter(({ url }) => url.startsWith('https')).map(({ url }) => url),
+        }),
+      },
+    ],
+  });
 </script>
 
 <template>
-  <div class="bg-background h-svh">
-    <img
-      srcset="
-        ~/assets/images/sm.png  640w,
-        ~/assets/images/md.png  768w,
-        ~/assets/images/lg.png 1024w
-      "
-      sizes="(max-width: 640px) 100vw, (max-width: 1023px) 800px, 1000px"
-      src="~/assets/images/sm.png"
-      role="presentation"
-      class="absolute top-0 right-0"
-    />
+  <main class="bg-surface max-h-screen">
+    <picture class="fixed top-0 right-0">
+      <source media="(max-width: 640px)" type="image/avif" srcset="~/assets/images/sm.avif" />
+      <source type="image/avif" srcset="~/assets/images/lg.avif" />
 
-    <div
-      class="flex flex-col justify-center h-5/6 mx-auto px-8 md:px-20 lg:px-32 lg:max-w-5xl relative"
-    >
-      <Icon name="grsk:logo" class="w-16 h-16" />
+      <img
+        src="~/assets/images/lg.avif"
+        alt=""
+        role="presentation"
+        fetchpriority="high"
+        class="w-full md:w-200 lg:w-250"
+      />
+    </picture>
+
+    <div class="flex flex-col min-h-svh mx-auto p-8 py-20 md:p-20 lg:px-32 lg:max-w-5xl relative">
+      <Icon name="grsk:logo" class="text-primary-500" size="56" />
 
       <div>
-        <h1 class="heading">Gerry Julio</h1>
-        <p class="text-light font-light text-lg md:text-xl mt-2">Frontend Engineer</p>
+        <h1
+          class="text-title mt-8 leading-tight inline-block text-transparent bg-clip-text bg-linear-to-r from-foreground from-30% via-primary-800 via-60% to-primary-500"
+        >
+          Gerry Julio
+        </h1>
+        <p class="text-subtitle">Software Engineer</p>
 
-        <p class="text-dark text-base mt-10">
-          I craft user-centric web experiences where form follows function, and focus on delivering
-          innovative solutions.
+        <p class="text-body mt-10">
+          I'm a software engineer who cares about simplifying complexity and elevating every aspect
+          of the user experience.
         </p>
 
-        <p class="text-dark text-base mt-4">
-          Currently at
-          <NuxtLink
-            to="https://www.doku.com/en-US"
-            target="_blank"
-            class="font-bold text-transparent bg-clip-text bg-gradient-to-r from-dark to-[#961912] transition-colors duration-500 hover:text-[#E1251B]"
-          >
-            DOKU
-          </NuxtLink>
-          , one of Indonesia's leading payment gateway companies, I build high-performance
-          applications that transform payment processes into seamless user experiences, prioritizing
-          security and maintainability.
+        <p class="text-body mt-4">
+          I'm currently building quote and order software for global telecommunication companies.
+          Previously, I built high-performance payment systems that people rely on every day.
+        </p>
+
+        <p class="text-body mt-4">
+          Outside of work, I'm usually side-questing - fumbling through guitar practice, playing
+          casual games for fun, or café-hopping with friends. I read most days and write when an
+          idea won't leave me alone.
         </p>
       </div>
 
-      <div class="flex items-center gap-4 mt-8 text-light">
-        <NuxtLink to="mailto:gerryjulioo@gmail.com">
-          <Icon
-            name="ph:envelope-fill"
-            class="transition-colors duration-300 w-6 h-6 md:w-7 md:h-7 hover:text-dark"
-          />
-        </NuxtLink>
-        <NuxtLink to="https://www.linkedin.com/in/gerryjulio/">
-          <Icon
-            name="simple-icons:linkedin"
-            class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
-          />
-        </NuxtLink>
-        <NuxtLink to="https://github.com/gerasaka/">
-          <Icon
-            name="simple-icons:github"
-            class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
-          />
-        </NuxtLink>
-        <NuxtLink to="https://x.com/gerasaka/">
-          <Icon
-            name="simple-icons:x"
-            class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
-          />
-        </NuxtLink>
-        <NuxtLink to="https://leetcode.com/u/gerasaka/">
-          <Icon
-            name="simple-icons:leetcode"
-            class="transition-colors duration-300 w-5 h-5 md:w-6 md:h-6 hover:text-dark"
-          />
+      <div class="flex items-center gap-4 mt-8 text-muted">
+        <NuxtLink
+          v-for="{ label, url, icon, color } in socials"
+          :key="label"
+          :to="url"
+          :aria-label="label"
+          :class="color"
+        >
+          <Icon :name="icon" size="28" class="transition-colors duration-300" />
         </NuxtLink>
       </div>
     </div>
-  </div>
+  </main>
 </template>
-
-<style lang="scss">
-  .heading {
-    @apply font-serif font-extrabold text-5xl leading-[4rem] inline-block mt-12 md:mt-20 text-transparent bg-clip-text bg-gradient-to-r from-dark from-30% via-primary-800 via-60% to-primary-500;
-  }
-</style>
