@@ -13,5 +13,6 @@
   "prettier.bracketSpacing": true,
   "prettier.semi": true,
   "prettier.tabWidth": 2,
-  "css.customData": [".vscode/tailwind.json"]
+  "css.customData": [".vscode/tailwind.json"],
+  "css.lint.unknownAtRules": "ignore"
 }
