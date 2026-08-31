@@ -1,9 +1,9 @@
 @utility text-title {
-  @apply font-serif font-bold text-5xl;
+  @apply font-serif text-5xl;
 }
 
 @utility text-subtitle {
-  @apply font-light italic text-xl text-muted;
+  @apply font-extralight text-xl text-muted;
 }
 
 @utility text-body {

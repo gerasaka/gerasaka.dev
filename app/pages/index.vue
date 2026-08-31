@@ -20,25 +20,25 @@
       label: 'linkedin',
       url: 'https://www.linkedin.com/in/gerryjulio/',
       icon: 'grsk:linkedin',
-      color: 'hover:text-[#0077B5]',
+      color: 'hover:text-[#0077B5] peer-hover:text-[#0077B5]',
     },
     {
       label: 'github',
       url: 'https://github.com/gerasaka/',
       icon: 'grsk:github',
-      color: 'hover:text-[#181717]',
+      color: 'hover:text-[#181717] peer-hover:text-[#181717]',
     },
     {
       label: 'bluesky',
       url: 'https://bsky.app/profile/gerasaka.dev',
       icon: 'grsk:bluesky',
-      color: 'hover:text-[#1185FE]',
+      color: 'hover:text-[#1185FE] peer-hover:text-[#1185FE]',
     },
     {
       label: 'x',
       url: 'https://x.com/gerasaka/',
       icon: 'grsk:x-square',
-      color: 'hover:text-[#000000]',
+      color: 'hover:text-[#000000] peer-hover:text-[#000000]',
     },
   ];
 
@@ -88,17 +88,17 @@
 </script>
 
 <template>
-  <main class="bg-surface max-h-screen">
+  <main class="bg-surface">
     <BrushGradient
       class="fixed top-0 right-0 w-full md:w-200 lg:w-250 translate-x-1/3 -translate-y-1/4"
     />
 
-    <div class="flex flex-col min-h-svh mx-auto p-8 py-20 md:p-20 lg:px-32 lg:max-w-5xl relative">
+    <div class="flex flex-col min-h-svh mx-auto p-8 py-20 md:p-20 lg:max-w-5xl relative">
       <Icon name="grsk:logo" class="fade-in text-primary-500" size="56" />
 
       <div class="body">
         <h1
-          class="fade-in text-title mt-12 leading-tight inline-block text-transparent bg-clip-text bg-linear-to-r from-foreground from-30% via-primary-800 via-60% to-primary-500 bg-size-[200%_auto]"
+          class="fade-in text-title font-bold [word-spacing:0.5rem] mt-16 leading-tight inline-block text-transparent bg-clip-text bg-linear-to-r from-foreground from-30% via-primary-800 via-60% to-primary-500 bg-size-[200%_auto]"
         >
           Gerry Julio
         </h1>
@@ -116,37 +116,66 @@
 
         <p class="fade-in text-body mt-4">
           Outside of work, I'm usually side-questing - fumbling through guitar practice, playing
-          casual games for fun, or café-hopping with friends. I read most days and write when an
-          idea won't leave me alone.
+          casual games for fun, or café-hopping with friends. I read whatever sparks my curiosity
+          and write when an idea won't leave me alone.
         </p>
 
-        <div class="fade-in flex items-center gap-4 mt-8 text-muted min-w-7">
-          <button
-            type="button"
-            aria-label="Copy email address"
-            class="social-link group relative cursor-pointer"
-            :data-copied="copied || undefined"
-            @click="copyEmail"
+        <NuxtLink
+          to="/writes"
+          class="fade-in group mt-12 inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground"
+        >
+          Writes
+          <span
+            aria-hidden="true"
+            class="transition-transform duration-150 ease-elegant group-hover:translate-x-0.75"
           >
-            <MailMorphIcon :open="copied" :size="28" />
-            <span
-              role="status"
-              class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 rounded-md bg-foreground text-surface text-xs whitespace-nowrap opacity-0 transition-[opacity,transform] duration-150 group-hover:opacity-100 group-data-copied:opacity-100"
-            >
-              {{ copied ? 'Copied!' : 'Copy email' }}
-            </span>
-          </button>
+            &rarr;
+          </span>
+        </NuxtLink>
 
-          <NuxtLink
+        <div class="fade-in flex items-center gap-4 mt-8 text-muted min-w-7">
+          <span class="flex flex-col items-center">
+            <button
+              type="button"
+              aria-label="Copy email address"
+              class="group relative cursor-pointer social-link active:scale-95"
+              :data-copied="copied || undefined"
+              @click="copyEmail"
+            >
+              <MailMorphIcon :open="copied" :size="28" />
+              <span
+                role="status"
+                class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 rounded-md bg-foreground text-surface text-xs whitespace-nowrap opacity-0 transition-[opacity,transform] duration-150 group-hover:opacity-100 group-data-copied:opacity-100"
+              >
+                {{ copied ? 'Copied!' : 'Copy email' }}
+              </span>
+            </button>
+            <span class="reflection" aria-hidden="true">
+              <MailMorphIcon :open="copied" :size="28" />
+            </span>
+          </span>
+
+          <span
             v-for="{ label, url, icon, color } in socials"
             :key="label"
-            :to="url"
-            :aria-label="label"
-            :class="color"
-            class="social-link"
+            class="flex flex-col items-center"
           >
-            <Icon :name="icon" size="28" />
-          </NuxtLink>
+            <NuxtLink
+              :to="url"
+              :aria-label="label"
+              :class="color"
+              class="peer social-link active:scale-95"
+            >
+              <Icon :name="icon" size="28" />
+            </NuxtLink>
+            <span
+              :class="color"
+              class="reflection transition-colors duration-150 ease-elegant"
+              aria-hidden="true"
+            >
+              <Icon :name="icon" size="28" />
+            </span>
+          </span>
         </div>
       </div>
     </div>
@@ -158,6 +187,15 @@
 
   .fade-in {
     animation: fade-in 500ms var(--ease-elegant) both;
+  }
+
+  .reflection {
+    display: flex;
+    transform: scaleY(-1) perspective(20px) rotateX(-30deg) scaleX(1.2);
+    opacity: 0.35;
+    filter: blur(0.5px);
+    mask-image: linear-gradient(to top, black, transparent 80%);
+    pointer-events: none;
   }
 
   .body > .fade-in {
@@ -199,9 +237,5 @@
     transition:
       transform 160ms var(--ease-out),
       color 150ms ease;
-  }
-
-  .social-link:active {
-    @apply scale-95;
   }
 </style>
