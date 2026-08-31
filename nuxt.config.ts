@@ -29,8 +29,14 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/content',
   ],
+  routeRules: {
+    '/writes': { prerender: true },
+  },
   nitro: {
-    preset: 'cloudflare-module',
+    prerender: {
+      crawlLinks: true,
+      routes: ['/writes'],
+    },
   },
   css: ['~/assets/styles/index.css'],
   vite: {
