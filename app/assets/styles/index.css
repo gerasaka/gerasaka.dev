@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
 @import './typography.css';
+@import './animations.css';
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', sans-serif;
