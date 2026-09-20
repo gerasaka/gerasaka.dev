@@ -81,12 +81,12 @@
 </script>
 
 <template>
-  <main class="bg-surface">
+  <main class="bg-surface min-h-svh">
     <BrushGradient
       class="fixed top-0 right-0 w-full md:w-200 lg:w-250 translate-x-1/3 -translate-y-1/4"
     />
 
-    <div class="flex flex-col min-h-svh mx-auto p-8 py-20 md:p-20 lg:max-w-5xl relative">
+    <div class="flex flex-col min-h-svh mx-auto p-8 py-20 md:p-20 max-w-4xl relative">
       <FadeIn>
         <FadeItem>
           <Icon name="grsk:logo" class="text-primary-500" size="56" />
