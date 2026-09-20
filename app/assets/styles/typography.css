@@ -1,5 +1,5 @@
 @utility text-title {
-  @apply font-serif text-5xl;
+  @apply font-serif text-5xl leading-tight;
 }
 
 @utility text-subtitle {
@@ -8,4 +8,42 @@
 
 @utility text-body {
   @apply text-foreground;
+}
+
+@utility prose-write {
+  @apply prose max-w-none
+    prose-headings:font-serif
+    prose-headings:font-normal
+    prose-headings:text-foreground
+    prose-p:text-foreground
+    prose-li:text-foreground
+    prose-strong:text-foreground
+    prose-em:font-medium
+    prose-blockquote:text-muted
+    prose-code:text-foreground
+    prose-pre:bg-[#f6f8fa]
+    prose-pre:text-foreground
+    prose-a:text-primary-600;
+
+  :where(h2, h3, h4) > a {
+    color: inherit;
+    text-decoration: none;
+    font-weight: inherit;
+  }
+
+  :where(h2, h3, h4) > a::after {
+    content: '#';
+    margin-inline-start: 0.4em;
+    color: var(--color-muted);
+    font-family: var(--font-sans);
+    font-size: 0.8em;
+    font-weight: 400;
+    opacity: 0;
+    transition: opacity 150ms ease;
+  }
+
+  :where(h2, h3, h4) > a:hover::after,
+  :where(h2, h3, h4) > a:focus-visible::after {
+    opacity: 1;
+  }
 }

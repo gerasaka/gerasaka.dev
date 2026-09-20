@@ -46,7 +46,7 @@ export default defineNuxtConfig({
     build: {
       markdown: {
         highlight: {
-          theme: 'github-dark',
+          theme: 'github-light',
         },
       },
     },
@@ -64,6 +64,7 @@ export default defineNuxtConfig({
         name: 'Plus Jakarta Sans',
         provider: 'google',
         weights: [200, 300, 400, 500, 600, 700, 800],
+        styles: ['normal', 'italic'],
       },
       { name: 'Libre Bodoni', provider: 'google', weights: [400, 500, 600, 700] },
       { name: 'Cascadia Code', provider: 'google', weights: [400, 700] },

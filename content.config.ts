@@ -4,7 +4,7 @@ export default defineContentConfig({
   collections: {
     writes: defineCollection({
       type: 'page',
-      source: 'writes/**',
+      source: 'writes/**/*.md',
       schema: z.object({
         date: z.string(),
         tags: z.array(z.string()).optional(),
