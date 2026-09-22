@@ -35,6 +35,11 @@
     },
   ];
 
+  const sections = [
+    { label: 'Writes', url: '/writes' },
+    { label: 'Games', url: '/games' },
+  ];
+
   useSeoMeta({
     robots: 'index, follow',
     title,
@@ -86,7 +91,7 @@
       class="fixed top-0 right-0 w-full md:w-200 lg:w-250 translate-x-1/3 -translate-y-1/4"
     />
 
-    <div class="flex flex-col min-h-svh mx-auto p-8 py-20 md:p-20 max-w-4xl relative">
+    <div class="main-container relative">
       <FadeIn>
         <FadeItem>
           <Icon name="grsk:logo" class="text-primary-500" size="56" />
@@ -122,24 +127,28 @@
           <FadeItem>
             <p class="text-body mt-4">
               Outside of work, I'm usually side-questing - fumbling through guitar practice, playing
-              casual games for fun, or café-hopping with friends. I read whatever sparks my
+              casual games for fun, or exploring new places with friends. I read whatever sparks my
               curiosity and write when an idea won't leave me alone.
             </p>
           </FadeItem>
 
-          <FadeItem>
-            <NuxtLink
-              to="/writes"
-              class="group mt-12 inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
-            >
-              Writes
-              <span
-                aria-hidden="true"
-                class="transition-transform duration-150 ease-elegant group-hover:translate-x-0.75"
+          <FadeItem class="mt-12">
+            <div class="flex gap-4">
+              <NuxtLink
+                v-for="section in sections"
+                :key="section.url"
+                :to="section.url"
+                class="group inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
               >
-                &rarr;
-              </span>
-            </NuxtLink>
+                {{ section.label }}
+                <span
+                  aria-hidden="true"
+                  class="transition-transform duration-150 ease-elegant group-hover:translate-x-0.75"
+                >
+                  &rarr;
+                </span>
+              </NuxtLink>
+            </div>
           </FadeItem>
 
           <FadeItem>
