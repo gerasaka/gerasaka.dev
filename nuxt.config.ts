@@ -31,11 +31,12 @@ export default defineNuxtConfig({
   ],
   routeRules: {
     '/writes': { prerender: true },
+    '/games': { prerender: true },
   },
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/writes'],
+      routes: ['/writes', '/games'],
     },
   },
   css: ['~/assets/styles/index.css'],
@@ -67,6 +68,7 @@ export default defineNuxtConfig({
         styles: ['normal', 'italic'],
       },
       { name: 'Libre Bodoni', provider: 'google', weights: [400, 500, 600, 700] },
+      { name: 'Jersey 15', provider: 'google', weights: [400] },
       { name: 'Cascadia Code', provider: 'google', weights: [400, 700] },
     ],
   },

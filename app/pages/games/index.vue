@@ -1,12 +1,15 @@
 <script lang="ts" setup>
-  const { data: posts } = await useAsyncData('writes-list', () =>
-    queryCollection('writes').order('date', 'DESC').all(),
-  );
+  const games = [
+    {
+      name: 'Snake',
+      path: '/games/snake',
+      description: "The classic. Eat, grow, don't hit the walls.",
+    },
+  ];
 
   useSeoMeta({
-    title: 'Writes · Gerry Julio',
-    // TODO: Update description
-    description: '',
+    title: 'Games',
+    description: 'Small games built for fun.',
   });
 </script>
 
@@ -30,32 +33,28 @@
         </FadeItem>
 
         <FadeItem>
-          <h1 class="text-title mt-12">Writes</h1>
+          <h1 class="text-title mt-12">Games</h1>
         </FadeItem>
         <FadeItem>
-          <!-- TODO: Update description -->
-          <p class="text-muted font-extralight text-xl mt-2"></p>
+          <p class="text-muted font-extralight text-xl mt-2">
+            Small games, built for fun. More coming soon.
+          </p>
         </FadeItem>
 
         <ul class="mt-12 flex flex-col gap-10">
-          <FadeItem v-for="post in posts" :key="post.path">
+          <FadeItem v-for="game in games" :key="game.path">
             <li>
-              <NuxtLink :to="post.path" class="group block">
-                <p class="text-muted text-sm">{{ formatDate(post.date) }}</p>
+              <NuxtLink :to="game.path" class="group block">
                 <h2
-                  class="font-serif font-normal text-2xl mt-1 group-hover:text-primary-600 transition-colors duration-300"
+                  class="font-pixel font-normal text-3xl group-hover:text-primary-600 transition-colors duration-300"
                 >
-                  {{ post.title }}
+                  {{ game.name }}
                 </h2>
-                <p class="mt-2">{{ post.description }}</p>
+                <p class="mt-2">{{ game.description }}</p>
               </NuxtLink>
             </li>
           </FadeItem>
         </ul>
-
-        <FadeItem v-if="!posts?.length">
-          <p class="text-muted mt-12">No posts yet. Check back soon.</p>
-        </FadeItem>
       </FadeIn>
     </div>
   </main>
