@@ -3,6 +3,7 @@
 @import './typography.css';
 @import './animations.css';
 @import './spacing.css';
+@import './components.css';
 
 @theme {
   --font-sans: 'Plus Jakarta Sans', sans-serif;

@@ -1,16 +1,6 @@
 <script lang="ts" setup>
-  const games = [
-    {
-      name: 'Snake',
-      path: '/games/snake',
-      description: "The classic. Eat, grow, don't hit the walls.",
-    },
-  ];
-
-  useSeoMeta({
-    title: 'Games',
-    description: 'Small games built for fun.',
-  });
+  import { GAMES } from '~/games/games';
+  import GameCard from '~/games/GameCard.vue';
 </script>
 
 <template>
@@ -36,25 +26,17 @@
           <h1 class="text-title mt-12">Games</h1>
         </FadeItem>
         <FadeItem>
-          <p class="text-muted font-extralight text-xl mt-2">
-            Small games, built for fun. More coming soon.
-          </p>
+          <!-- TODO: Update description -->
+          <p class="text-muted font-extralight text-xl mt-2"></p>
         </FadeItem>
 
-        <ul class="mt-12 flex flex-col gap-10">
-          <FadeItem v-for="game in games" :key="game.path">
-            <li>
-              <NuxtLink :to="game.path" class="group block">
-                <h2
-                  class="font-pixel font-normal text-3xl group-hover:text-primary-600 transition-colors duration-300"
-                >
-                  {{ game.name }}
-                </h2>
-                <p class="mt-2">{{ game.description }}</p>
-              </NuxtLink>
+        <FadeItem>
+          <ul class="mt-12 grid grid-cols-2 gap-6 sm:grid-cols-3">
+            <li v-for="game in GAMES" :key="game.name">
+              <GameCard :game="game" />
             </li>
-          </FadeItem>
-        </ul>
+          </ul>
+        </FadeItem>
       </FadeIn>
     </div>
   </main>
