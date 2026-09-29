@@ -20,4 +20,10 @@ export const GAMES: Game[] = [
     preview: { src: '/snake-preview.png', alt: 'Snake gameplay' },
     status: 'live',
   },
+  {
+    name: 'Game of Life',
+    description: "Conway's cellular automaton. Watch cells live, die, and multiply.",
+    link: { type: 'internal', to: '/games/game-of-life' },
+    preview: { src: '/life-preview.png', alt: 'Game of Life simulation' },
+  },
 ];
