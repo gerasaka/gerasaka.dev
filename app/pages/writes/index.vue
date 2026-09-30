@@ -12,7 +12,7 @@
 
 <template>
   <main class="bg-surface min-h-svh">
-    <div class="flex flex-col mx-auto p-8 py-20 md:p-20 max-w-4xl">
+    <div class="main-container">
       <FadeIn>
         <FadeItem>
           <NuxtLink

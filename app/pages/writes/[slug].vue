@@ -17,7 +17,7 @@
 
 <template>
   <main class="bg-surface min-h-svh">
-    <article class="flex flex-col mx-auto px-8 py-20 md:p-20 max-w-4xl">
+    <article class="main-container">
       <NuxtLink
         to="/writes"
         class="group inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
