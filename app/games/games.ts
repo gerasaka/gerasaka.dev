@@ -26,4 +26,10 @@ export const GAMES: Game[] = [
     link: { type: 'internal', to: '/games/game-of-life' },
     preview: { src: '/life-preview.png', alt: 'Game of Life simulation' },
   },
+  {
+    name: 'Flood-It',
+    description: 'Flood the board with one color before you run out of moves.',
+    link: { type: 'internal', to: '/games/flood-it' },
+    preview: { src: '/flood-it-preview.png', alt: 'Flood-It board' },
+  },
 ];
