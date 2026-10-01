@@ -1,0 +1,31 @@
+{
+  "name": "gerasaka-tools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt generate",
+    "dev": "nuxt dev --port 3001",
+    "preview": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "nuxt typecheck",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/icon": "^2.3.1",
+    "nuxt": "^4.4.8",
+    "vue": "^3.5.13",
+    "vue-router": "^4.4.5"
+  },
+  "devDependencies": {
+    "@nuxt/kit": "4.4.8",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.2",
+    "@vueuse/core": "^14.3.0",
+    "@vueuse/nuxt": "^14.3.0",
+    "tailwindcss": "^4.3.2",
+    "typescript": "^5.6.3",
+    "vue-tsc": "~2.2.12",
+    "wrangler": "^4.127.1"
+  }
+}

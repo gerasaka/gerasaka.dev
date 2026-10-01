@@ -31,13 +31,14 @@
       label: 'x',
       url: 'https://x.com/gerasaka/',
       icon: 'grsk:x-square',
-      color: 'hover:text-[#000000] peer-hover:text-[#000000]',
+      color: 'hover:text-black peer-hover:text-black',
     },
   ];
 
   const sections = [
     { label: 'Writes', url: '/writes' },
     { label: 'Games', url: '/games' },
+    { label: 'Tools', url: 'https://tools.gerasaka.dev' },
   ];
 
   useSeoMeta({
@@ -204,7 +205,7 @@
 </template>
 
 <style scoped>
-  @reference "~/assets/styles/index.css";
+  @reference "#base/app/assets/styles/index.css";
 
   .reflection {
     display: flex;

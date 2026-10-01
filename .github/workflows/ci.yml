@@ -36,8 +36,14 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Typecheck (tools)
+        run: pnpm --filter gerasaka-tools typecheck
+
       - name: Test
         run: pnpm test
 
       - name: Build
         run: pnpm build
+
+      - name: Build (tools)
+        run: pnpm --filter gerasaka-tools build
