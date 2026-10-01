@@ -39,6 +39,9 @@ jobs:
       - name: Typecheck (tools)
         run: pnpm --filter gerasaka-tools typecheck
 
+      - name: Test (tools)
+        run: pnpm --filter gerasaka-tools test
+
       - name: Test
         run: pnpm test
 

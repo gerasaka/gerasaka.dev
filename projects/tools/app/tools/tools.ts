@@ -21,4 +21,13 @@ export type Tool = {
   source?: string;
 };
 
-export const TOOLS: Tool[] = [];
+export const TOOLS: Tool[] = [
+  {
+    name: 'XML Formatter',
+    description: 'Unescape and prettify XML copied from logs. Runs entirely in your browser.',
+    link: { type: 'internal', to: '/xml-formatter' },
+    kind: 'web',
+    stack: ['vue'],
+    status: 'live',
+  },
+];
