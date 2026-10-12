@@ -1,0 +1,88 @@
+/*
+ * Raw palette. Components must not use these directly; use the semantic
+ * tokens in theme.css so themes can remap them.
+ * `static` keeps every variable emitted so the /design page can read them.
+ */
+@theme static {
+  --color-*: initial;
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+  --color-gray-950: #0a0a0a;
+
+  --color-blue-50: #eef4fb;
+  --color-blue-100: #d9e7f7;
+  --color-blue-200: #b9d3f0;
+  --color-blue-300: #8db7e6;
+  --color-blue-400: #6299dc;
+  --color-blue-500: #4285d5;
+  --color-blue-600: #376fb1;
+  --color-blue-700: #2c598e;
+  --color-blue-800: #21436b;
+  --color-blue-900: #162c47;
+  --color-blue-950: #0d1b2b;
+
+  /*
+   * Status hues: muted and earthy to sit beside the neutral grays. Generated in
+   * OKLCH from the 500 anchor at a fixed hue. Every 500 passes WCAG AA (4.5:1)
+   * on white, gray-100, and its own 50; every 400 passes on gray-900/950.
+   */
+  --color-brick-50: #fff4f2;
+  --color-brick-100: #ffe4e1;
+  --color-brick-200: #fdc9c2;
+  --color-brick-300: #f4a79d;
+  --color-brick-400: #e38378;
+  --color-brick-500: #a8443c;
+  --color-brick-600: #92352e;
+  --color-brick-700: #762621;
+  --color-brick-800: #591a16;
+  --color-brick-900: #3e0f0d;
+  --color-brick-950: #250605;
+
+  --color-ochre-50: #fcf6ef;
+  --color-ochre-100: #f7e9da;
+  --color-ochre-200: #ebd3b9;
+  --color-ochre-300: #dbb68e;
+  --color-ochre-400: #c69764;
+  --color-ochre-500: #8a5a1c;
+  --color-ochre-600: #794d10;
+  --color-ochre-700: #613b03;
+  --color-ochre-800: #492b02;
+  --color-ochre-900: #321c01;
+  --color-ochre-950: #1d0e00;
+
+  --color-moss-50: #f4f8f4;
+  --color-moss-100: #e5eee7;
+  --color-moss-200: #ccdccf;
+  --color-moss-300: #acc5b2;
+  --color-moss-400: #8bab92;
+  --color-moss-500: #4a6b52;
+  --color-moss-600: #426149;
+  --color-moss-700: #324c38;
+  --color-moss-800: #243929;
+  --color-moss-900: #16261a;
+  --color-moss-950: #0a140d;
+
+  --color-violet-50: #f7f5ff;
+  --color-violet-100: #ebe8fb;
+  --color-violet-200: #d8d2f4;
+  --color-violet-300: #bfb5e9;
+  --color-violet-400: #a496d6;
+  --color-violet-500: #6a5a9c;
+  --color-violet-600: #5b4c89;
+  --color-violet-700: #483a6f;
+  --color-violet-800: #352b54;
+  --color-violet-900: #231b3a;
+  --color-violet-950: #130d22;
+}

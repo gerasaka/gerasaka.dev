@@ -1,0 +1,41 @@
+/*
+ * Shape and elevation. Radius and shadow reset Tailwind's defaults so only
+ * these steps exist.
+ */
+@theme static {
+  /*
+   * Swiss: near-square edges. Just enough radius to soften pixels, never enough to read as round.
+   * `rounded-none` and `rounded-full` (switches, radios) remain as built-ins.
+   */
+  --radius-*: initial;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+
+  /*
+   * Signature shape: square with a single squircle bottom-right corner, sized relative to the element.
+   * An accent, not a default: use it for one hero moment per page (a featured image, a cover card).
+   */
+  --corner-sm: 30%;
+  --corner-md: 50%;
+  --corner-lg: 80%;
+
+  /*
+   * Flat by design: depth comes from surface tints and borders. Shadows are only
+   * for UI that floats above the page. The 1px ring keeps edges visible in dark
+   * mode, where shadows barely register.
+   */
+  --shadow-*: initial;
+  --shadow-overlay: 0 0 0 1px var(--color-border), 0 8px 24px -12px var(--color-shadow);
+  --shadow-modal: 0 0 0 1px var(--color-border), 0 24px 48px -16px var(--color-shadow);
+}
+
+/* Percentages resolve per axis, so they curve elliptically on non-square boxes. */
+@utility corner-* {
+  border-bottom-right-radius: --value(--corner-*, [length], [percentage]);
+  corner-shape: squircle;
+}
+
+/* For `rounded-*`; `corner-*` already includes it. Unsupported browsers fall back to a round corner. */
+@utility squircle {
+  corner-shape: squircle;
+}

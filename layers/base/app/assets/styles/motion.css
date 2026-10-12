@@ -1,0 +1,136 @@
+@theme static {
+  /*
+   * UI motion stays under 300ms: 300 is the ceiling (slow), not the baseline.
+   * Exits should use a shorter step than their enter.
+   */
+  --transition-duration-fast: 150ms;
+  --transition-duration-base: 200ms;
+  --transition-duration-slow: 300ms;
+
+  /*
+   * No `ease-in`: it delays the first frames, the moment users watch most.
+   * Exits use `ease-out` too, just faster. `ease-linear` stays for constant motion.
+   */
+  --ease-*: initial;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/*
+ * One-shot entrance fade, used by <FadeIn>/<FadeItem> on the first page load.
+ * Later navigations use the view-transition crossfade instead.
+ * No blur: animating `filter` paints every frame.
+ */
+@utility fade-in {
+  animation: fade-in var(--transition-duration-slow) var(--ease-out) both;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+ * Page transitions (View Transitions API, enabled in nuxt.config). Navigation
+ * happens constantly, so it's a quick crossfade, never a slide.
+ * For a shared element that morphs between pages, give it the same
+ * `[view-transition-name:post-title]` on both pages; names must be unique per page.
+ */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--transition-duration-fast);
+  animation-timing-function: var(--ease-out);
+}
+
+::view-transition-group(*) {
+  animation-duration: var(--transition-duration-base);
+  animation-timing-function: var(--ease-in-out);
+}
+
+/*
+ * Enter/exit for top-layer UI: <dialog> and [popover] (menus, tooltips, toasts).
+ * Pure CSS: `@starting-style` animates the open, `allow-discrete` keeps the
+ * element rendered while it animates out. Exit is faster than enter.
+ *
+ * Tune per component:
+ *   --motion-origin  transform origin; point it at the trigger for popovers
+ *                    (e.g. `top left`), keep `center` for dialogs
+ *   --motion-scale   starting scale, default 0.96 (never 0)
+ *   --motion-x/y     starting offset, e.g. --motion-y: 0.5rem for toasts rising in,
+ *                    --motion-x: 100% for a drawer sliding in from the right
+ */
+@utility motion-pop {
+  opacity: 0;
+  scale: var(--motion-scale, 0.96);
+  translate: var(--motion-x, 0) var(--motion-y, 0);
+  transform-origin: var(--motion-origin, center);
+  transition-property: opacity, scale, translate, display, overlay;
+  transition-duration: var(--transition-duration-fast);
+  transition-timing-function: var(--ease-out);
+  transition-behavior: allow-discrete;
+
+  &:popover-open,
+  &[open] {
+    opacity: 1;
+    scale: 1;
+    translate: 0 0;
+    transition-duration: var(--transition-duration-base);
+  }
+
+  @starting-style {
+    &:popover-open,
+    &[open] {
+      opacity: 0;
+      scale: var(--motion-scale, 0.96);
+      translate: var(--motion-x, 0) var(--motion-y, 0);
+    }
+  }
+}
+
+/* Dimmed backdrop for modal <dialog>, fading with it. */
+@utility motion-backdrop {
+  &::backdrop {
+    background-color: var(--color-backdrop);
+    opacity: 0;
+    transition-property: opacity, display, overlay;
+    transition-duration: var(--transition-duration-fast);
+    transition-timing-function: var(--ease-out);
+    transition-behavior: allow-discrete;
+  }
+
+  &[open]::backdrop {
+    opacity: 1;
+    transition-duration: var(--transition-duration-base);
+  }
+
+  @starting-style {
+    &[open]::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+/*
+ * Smooth open/close for <details> (accordions, disclosures). Relies on
+ * `interpolate-size` from base.css; browsers without it open instantly.
+ */
+@utility motion-collapse {
+  &::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition-property: block-size, content-visibility;
+    transition-duration: var(--transition-duration-base);
+    transition-timing-function: var(--ease-out);
+    transition-behavior: allow-discrete;
+  }
+
+  &[open]::details-content {
+    block-size: auto;
+  }
+}

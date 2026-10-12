@@ -2,51 +2,14 @@
 @plugin "@tailwindcss/typography";
 /* Apps extending this layer build from their own directory, so scan the layer explicitly. */
 @source "../..";
+
+/* Foundations: color, typography, shape, motion, layout. */
+@import './palette.css';
+@import './theme.css';
 @import './typography.css';
-@import './animations.css';
-@import './spacing.css';
+@import './shape.css';
+@import './motion.css';
+@import './layout.css';
+@import './base.css';
+
 @import './components.css';
-
-@theme {
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-serif: 'Libre Bodoni', serif;
-  --font-mono: 'Cascadia Code', monospace;
-  --font-pixel: 'Jersey 15', sans-serif;
-
-  --color-surface: #ffffff;
-  --color-foreground: #000000;
-  --color-muted: #8a8a8a;
-
-  --color-primary-50: #d9e7f7;
-  --color-primary-100: #c0d6f1;
-  --color-primary-200: #a0c2ea;
-  --color-primary-300: #81aee3;
-  --color-primary-400: #6299dc;
-  --color-primary-500: #4285d5;
-  --color-primary-600: #376fb1;
-  --color-primary-700: #2c598e;
-  --color-primary-800: #21436b;
-  --color-primary-900: #162c47;
-  --color-primary-950: #0d1b2b;
-
-  --ease-elegant: cubic-bezier(0.5, 1, 0.85, 1);
-}
-
-:root {
-  color-scheme: light;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto !important;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
