@@ -10,6 +10,9 @@ export default defineNuxtConfig({
     '#base': resolve('./'),
   },
   css: [resolve('./app/assets/styles/index.css')],
+  experimental: {
+    viewTransition: true,
+  },
   vite: {
     plugins: [tailwindcss()],
   },
@@ -22,8 +25,8 @@ export default defineNuxtConfig({
   },
   fonts: {
     families: [
-      { name: 'Plus Jakarta Sans', provider: 'google', weights: [200, 400, 600, 700] },
-      { name: 'Libre Bodoni', provider: 'google', weights: [400, 500, 600, 700] },
+      { name: 'Plus Jakarta Sans', provider: 'google', weights: [200, 400, 500, 600, 700] },
+      { name: 'Libre Bodoni', provider: 'google', weights: [400] },
       { name: 'Jersey 15', provider: 'google', weights: [400] },
       { name: 'Cascadia Code', provider: 'google', weights: [400, 700] },
     ],
