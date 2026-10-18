@@ -101,7 +101,7 @@
 </template>
 
 <style scoped>
-  @reference "~/assets/styles/index.css";
+  @reference "#base/app/assets/styles/index.css";
 
   .brush-stroke {
     opacity: 0;

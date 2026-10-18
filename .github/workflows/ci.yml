@@ -36,8 +36,17 @@ jobs:
       - name: Typecheck
         run: pnpm typecheck
 
+      - name: Typecheck (tools)
+        run: pnpm --filter grsk-tools typecheck
+
       - name: Test
         run: pnpm test
 
+      - name: Test (tools)
+        run: pnpm --filter grsk-tools test
+
       - name: Build
         run: pnpm build
+
+      - name: Build (tools)
+        run: pnpm --filter grsk-tools build

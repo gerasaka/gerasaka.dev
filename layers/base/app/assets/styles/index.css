@@ -1,5 +1,7 @@
 @import 'tailwindcss';
 @plugin "@tailwindcss/typography";
+/* Apps extending this layer build from their own directory, so scan the layer explicitly. */
+@source "../..";
 @import './typography.css';
 @import './animations.css';
 @import './spacing.css';
