@@ -42,6 +42,6 @@
   }
 
   .body-path {
-    transition: opacity 0.35s ease;
+    transition: opacity 0.35s var(--ease-glide);
   }
 </style>

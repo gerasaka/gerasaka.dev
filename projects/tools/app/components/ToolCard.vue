@@ -1,6 +1,21 @@
-<script lang="ts" setup>
-  import type { Tool } from '~/tools/tools';
+<script lang="ts">
+  type ToolLink =
+    | { type: 'internal'; to: string }
+    | { type: 'mounted'; path: string }
+    | { type: 'external'; url: string }
+    | { type: 'repo'; url: string; install?: string };
 
+  export type Tool = {
+    name: string;
+    description: string;
+    link: ToolLink;
+    kind: 'web' | 'cli' | 'extension';
+    stack: string[];
+    status?: 'live' | 'wip';
+  };
+</script>
+
+<script lang="ts" setup>
   const { tool } = defineProps<{ tool: Tool }>();
 
   const wrapper = computed(() => {
@@ -26,29 +41,31 @@
 </script>
 
 <template>
-  <component :is="wrapper.is" v-bind="wrapper.props" class="card flex flex-col gap-2">
+  <component :is="wrapper.is" v-bind="wrapper.props" class="card card-link flex flex-col gap-2">
     <div class="flex items-center gap-3">
       <h2 class="font-mono text-xl">{{ tool.name }}</h2>
-      <span
-        v-if="tool.status === 'wip'"
-        class="rounded-full bg-amber-500 px-2 py-0.5 text-xs text-white"
-      >
-        WIP
-      </span>
+      <span v-if="tool.status === 'wip'" class="badge badge-warning">WIP</span>
     </div>
 
     <p class="text-muted">{{ tool.description }}</p>
 
     <code
       v-if="tool.link.type === 'repo' && tool.link.install"
-      class="w-fit rounded bg-[#f6f8fa] px-2 py-1 font-mono text-sm"
+      class="w-fit rounded-sm bg-surface-subtle px-2 py-1 font-mono text-sm"
     >
       {{ tool.link.install }}
     </code>
 
-    <ul class="flex flex-wrap gap-2 text-sm text-muted">
-      <li class="italic">{{ tool.kind }}</li>
-      <li v-for="tech in tool.stack" :key="tech">· {{ tech }}</li>
+    <ul class="meta text-caption flex flex-wrap">
+      <li>{{ tool.kind }}</li>
+      <li v-for="tech in tool.stack" :key="tech">{{ tech }}</li>
     </ul>
   </component>
 </template>
+
+<style scoped>
+  .meta > li + li::before {
+    content: '·';
+    margin-inline: 0.5em;
+  }
+</style>

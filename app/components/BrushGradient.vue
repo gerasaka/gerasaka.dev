@@ -107,7 +107,7 @@
     opacity: 0;
     transform-box: fill-box;
     transform-origin: center;
-    animation: brush-in 1100ms var(--ease-elegant, cubic-bezier(0.23, 1, 0.32, 1)) forwards;
+    animation: brush-in 1100ms var(--ease-glide) forwards;
   }
 
   .brush-stroke:nth-of-type(1) {

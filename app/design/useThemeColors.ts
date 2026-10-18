@@ -15,6 +15,16 @@ function toHex(rgb: number[]) {
   return `#${rgb.map((v) => v.toString(16).padStart(2, '0')).join('')}`;
 }
 
+/** Opaque colors from `color-mix()` compute to `oklab(...)`; painting one pixel converts it to sRGB. */
+function toRgbString(value: string) {
+  const ctx = document.createElement('canvas').getContext('2d', { willReadFrequently: true });
+  if (!ctx) return value;
+  ctx.fillStyle = value;
+  ctx.fillRect(0, 0, 1, 1);
+  const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
 function luminance(rgb: [number, number, number]) {
   const [r, g, b] = rgb.map((v) => {
     const c = v / 255;
@@ -51,10 +61,14 @@ export function useThemeColors(tokens: string[], paletteVars: string[]) {
       for (const token of tokens) {
         probe.style.backgroundColor = `var(--color-${token})`;
         const value = getComputedStyle(probe).backgroundColor;
-        const match = value.match(RGB);
+        const tintAlpha = value.match(/\/\s*([\d.]+)\)$/)?.[1];
+        if (!RGB.test(value) && tintAlpha) {
+          result[scheme][token] = { label: `ink ${Math.round(Number(tintAlpha) * 100)}%` };
+          continue;
+        }
+        const match = (RGB.test(value) ? value : toRgbString(value)).match(RGB);
         if (!match) {
-          const alpha = value.match(/\/\s*([\d.]+)\)$/)?.[1];
-          result[scheme][token] = { label: alpha ? `ink ${Math.round(Number(alpha) * 100)}%` : 'tint' };
+          result[scheme][token] = { label: value };
           continue;
         }
         const rgb = [Number(match[1]), Number(match[2]), Number(match[3])] as [number, number, number];

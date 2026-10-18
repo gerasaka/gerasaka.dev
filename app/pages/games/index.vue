@@ -4,20 +4,15 @@
 </script>
 
 <template>
-  <main class="bg-surface min-h-svh">
-    <div class="main-container">
+  <main class="min-h-svh">
+    <div class="container-main page">
       <FadeIn>
         <FadeItem>
           <NuxtLink
             to="/"
-            class="group inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
+            class="btn btn-quiet"
           >
-            <span
-              aria-hidden="true"
-              class="transition-transform duration-150 ease-elegant group-hover:-translate-x-0.75"
-            >
-              &larr;
-            </span>
+            <span aria-hidden="true">&larr;</span>
             Back
           </NuxtLink>
         </FadeItem>
@@ -27,7 +22,7 @@
         </FadeItem>
         <FadeItem>
           <!-- TODO: Update description -->
-          <p class="text-muted font-extralight text-xl mt-2"></p>
+          <p class="text-subtitle mt-2"></p>
         </FadeItem>
 
         <FadeItem>

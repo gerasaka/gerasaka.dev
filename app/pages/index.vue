@@ -13,25 +13,23 @@
       label: 'linkedin',
       url: 'https://www.linkedin.com/in/gerryjulio/',
       icon: 'grsk:linkedin',
-      color: 'hover:text-[#0077B5] peer-hover:text-[#0077B5]',
+      brand: '#0077B5',
     },
     {
       label: 'github',
       url: 'https://github.com/gerasaka/',
       icon: 'grsk:github',
-      color: 'hover:text-[#181717] peer-hover:text-[#181717]',
     },
     {
       label: 'bluesky',
       url: 'https://bsky.app/profile/gerasaka.dev',
       icon: 'grsk:bluesky',
-      color: 'hover:text-[#1185FE] peer-hover:text-[#1185FE]',
+      brand: '#1185FE',
     },
     {
       label: 'x',
       url: 'https://x.com/gerasaka/',
       icon: 'grsk:x-square',
-      color: 'hover:text-black peer-hover:text-black',
     },
   ];
 
@@ -87,21 +85,21 @@
 </script>
 
 <template>
-  <main class="bg-surface min-h-svh">
+  <main class="min-h-svh">
     <BrushGradient
       class="fixed top-0 right-0 w-full md:w-200 lg:w-250 translate-x-1/3 -translate-y-1/4"
     />
 
-    <div class="main-container relative">
+    <div class="container-main page relative">
       <FadeIn>
         <FadeItem>
-          <Icon name="grsk:logo" class="text-primary-500" size="56" />
+          <Icon name="grsk:logo" class="text-accent" size="56" />
         </FadeItem>
 
-        <div class="body">
+        <div>
           <FadeItem>
             <h1
-              class="text-title font-bold [word-spacing:0.5rem] mt-16 leading-tight inline-block text-transparent bg-clip-text bg-linear-to-r from-foreground from-30% via-primary-800 via-60% to-primary-500 bg-size-[200%_auto]"
+              class="text-title font-semibold mt-16 inline-block text-transparent bg-clip-text bg-linear-to-r from-foreground from-60% via-accent-strong via-90% to-accent"
             >
               Gerry Julio
             </h1>
@@ -139,60 +137,42 @@
                 v-for="section in sections"
                 :key="section.url"
                 :to="section.url"
-                class="group inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
+                class="btn btn-quiet"
               >
-                {{ section.label }}
-                <span
-                  aria-hidden="true"
-                  class="transition-transform duration-150 ease-elegant group-hover:translate-x-0.75"
-                >
-                  &rarr;
-                </span>
+                {{ section.label }} <span aria-hidden="true">&rarr;</span>
               </NuxtLink>
             </div>
           </FadeItem>
 
           <FadeItem>
-            <div class="flex items-center gap-4 mt-8 text-muted min-w-7">
-              <span class="flex flex-col items-center">
+            <div class="flex items-center gap-4 mt-8 text-muted">
+              <span class="social">
                 <button
                   type="button"
                   aria-label="Copy email address"
-                  class="group relative cursor-pointer social-link active:scale-95"
-                  :data-copied="copied || undefined"
+                  class="social-link tooltip"
+                  :data-tooltip="copied ? 'Copied!' : 'Copy email'"
+                  :data-tooltip-open="copied || undefined"
                   @click="copy(email)"
                 >
                   <MailMorphIcon :open="copied" :size="28" />
-                  <span
-                    role="status"
-                    class="absolute bottom-full left-1/2 -translate-x-1/2 mb-1 px-2 py-1 rounded-md bg-foreground text-surface text-xs whitespace-nowrap opacity-0 transition-[opacity,transform] duration-150 group-hover:opacity-100 group-data-copied:opacity-100"
-                  >
-                    {{ copied ? 'Copied!' : 'Copy email' }}
-                  </span>
                 </button>
                 <span class="reflection" aria-hidden="true">
                   <MailMorphIcon :open="copied" :size="28" />
                 </span>
+                <span role="status" class="sr-only">{{ copied ? 'Email copied' : '' }}</span>
               </span>
 
               <span
-                v-for="{ label, url, icon, color } in socials"
+                v-for="{ label, url, icon, brand } in socials"
                 :key="label"
-                class="flex flex-col items-center"
+                class="social"
+                :style="brand ? { '--brand': brand } : undefined"
               >
-                <NuxtLink
-                  :to="url"
-                  :aria-label="label"
-                  :class="color"
-                  class="peer social-link active:scale-95"
-                >
+                <NuxtLink :to="url" :aria-label="label" class="social-link">
                   <Icon :name="icon" size="28" />
                 </NuxtLink>
-                <span
-                  :class="color"
-                  class="reflection transition-colors duration-150 ease-elegant"
-                  aria-hidden="true"
-                >
+                <span class="reflection" aria-hidden="true">
                   <Icon :name="icon" size="28" />
                 </span>
               </span>
@@ -207,19 +187,16 @@
 <style scoped>
   @reference "#base/app/assets/styles/index.css";
 
-  .reflection {
-    display: flex;
-    transform: scaleY(-1) perspective(20px) rotateX(-30deg) scaleX(1.2);
-    opacity: 0.35;
-    filter: blur(0.5px);
-    mask-image: linear-gradient(to top, black, transparent 80%);
-    pointer-events: none;
+  h1 {
+    padding-bottom: 0.15em;
+    word-spacing: 0.15em;
+    background-size: 200% auto;
   }
 
   h1.fade-in {
     animation-name: fade-in, gradient-slide;
-    animation-duration: 500ms, 5s;
-    animation-timing-function: var(--ease-elegant), ease-in-out;
+    animation-duration: var(--transition-duration-slow), 5s;
+    animation-timing-function: var(--ease-glide), var(--ease-sweep);
     animation-fill-mode: both;
   }
 
@@ -232,11 +209,38 @@
     }
   }
 
+  .social {
+    --brand: var(--color-foreground);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .social-link {
     display: flex;
     align-items: center;
-    transition:
-      transform 160ms var(--ease-out),
-      color 150ms ease;
+    cursor: pointer;
+    transition-property: scale, color;
+    transition-duration: var(--transition-duration-fast);
+    transition-timing-function: var(--ease-glide);
+
+    &:active {
+      scale: 0.95;
+    }
+  }
+
+  .reflection {
+    display: flex;
+    transform: scaleY(-1) perspective(20px) rotateX(-30deg) scaleX(1.2);
+    opacity: 0.35;
+    filter: blur(0.5px);
+    mask-image: linear-gradient(to top, black, transparent 80%);
+    pointer-events: none;
+    transition: color var(--transition-duration-fast) var(--ease-glide);
+  }
+
+  .social:has(.social-link:hover) :is(.social-link, .reflection) {
+    color: var(--brand);
   }
 </style>

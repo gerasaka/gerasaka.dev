@@ -1,6 +1,16 @@
 <script lang="ts" setup>
-  import { TOOLS } from '~/tools/tools';
-  import ToolCard from '~/tools/ToolCard.vue';
+  import type { Tool } from '~/components/ToolCard.vue';
+
+  const tools: Tool[] = [
+    {
+      name: 'XML Formatter',
+      description: 'Unescape and prettify XML copied from logs. Runs entirely in your browser.',
+      link: { type: 'internal', to: '/xml-formatter' },
+      kind: 'web',
+      stack: ['vue'],
+      status: 'live',
+    },
+  ];
 
   const title = 'Tools — Gerry Julio';
   const description = 'Small tools I built and use every day.';
@@ -18,20 +28,15 @@
 </script>
 
 <template>
-  <main class="bg-surface min-h-svh">
-    <div class="main-container">
+  <main class="min-h-svh">
+    <div class="container-main page">
       <FadeIn>
         <FadeItem>
           <a
             href="https://gerasaka.dev"
-            class="group inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
+            class="btn btn-quiet"
           >
-            <span
-              aria-hidden="true"
-              class="transition-transform duration-150 ease-elegant group-hover:-translate-x-0.75"
-            >
-              &larr;
-            </span>
+            <span aria-hidden="true">&larr;</span>
             gerasaka.dev
           </a>
         </FadeItem>
@@ -44,12 +49,12 @@
         </FadeItem>
 
         <FadeItem>
-          <ul v-if="TOOLS.length" class="mt-12 flex flex-col gap-2">
-            <li v-for="tool in TOOLS" :key="tool.name">
+          <ul v-if="tools.length" class="mt-12 flex flex-col gap-2">
+            <li v-for="tool in tools" :key="tool.name">
               <ToolCard :tool="tool" />
             </li>
           </ul>
-          <p v-else class="mt-12 text-muted italic">Nothing here yet. Still sharpening.</p>
+          <p v-else class="mt-12 text-muted">Nothing here yet. Still sharpening.</p>
         </FadeItem>
       </FadeIn>
     </div>

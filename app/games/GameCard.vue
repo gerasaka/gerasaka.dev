@@ -12,16 +12,9 @@
 </script>
 
 <template>
-  <component :is="wrapperElType" v-bind="wrapperProps" class="card flex flex-col gap-4">
-    <div
-      class="relative aspect-3/2 w-full rounded-br-[30%] overflow-hidden border border-[#f1f1f1]"
-    >
-      <div
-        v-if="game.status === 'wip'"
-        class="absolute top-0 left-0 z-10 rounded-br-[30%] bg-amber-500 text-white inline p-2"
-      >
-        WIP
-      </div>
+  <component :is="wrapperElType" v-bind="wrapperProps" class="card card-link flex flex-col gap-4">
+    <div class="relative aspect-3/2 w-full overflow-hidden border border-line">
+      <span v-if="game.status === 'wip'" class="badge badge-warning absolute top-2 left-2 z-10">WIP</span>
 
       <NuxtImg
         :src="game.preview.src"

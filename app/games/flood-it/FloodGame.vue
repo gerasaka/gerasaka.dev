@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import GameOverlay from '~/games/GameOverlay.vue';
   import { createBoard, flood, isSolved, type Board } from './flood';
 
   type GameState = 'playing' | 'won' | 'lost';
@@ -66,7 +67,7 @@
 <template>
   <div class="w-full max-w-md">
     <div class="flex items-baseline justify-between">
-      <p class="text-muted text-sm">Moves</p>
+      <p class="text-caption">Moves</p>
       <p class="font-pixel text-3xl leading-none" aria-live="polite">
         {{ moves }}<span class="text-muted"> / {{ MAX_MOVES }}</span>
       </p>
@@ -75,22 +76,19 @@
     <div class="relative mt-3 aspect-square w-full">
       <canvas ref="canvas" class="block h-full w-full" role="img" aria-label="Flood-It board" />
 
-      <div
-        v-if="state !== 'playing'"
-        class="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-surface/80 text-center"
-      >
+      <GameOverlay v-if="state !== 'playing'">
         <p class="font-pixel text-3xl">{{ state === 'won' ? 'Flooded!' : 'Out of moves' }}</p>
-        <p class="text-muted text-sm">
+        <p class="text-caption">
           {{ state === 'won' ? `Solved in ${moves} moves` : 'The board beat you this time' }}
         </p>
         <button
           type="button"
-          class="mt-2 cursor-pointer italic text-muted transition-colors duration-150 hover:text-foreground"
+          class="btn btn-quiet mt-2"
           @click="restart"
         >
           New game
         </button>
-      </div>
+      </GameOverlay>
     </div>
 
     <div class="mt-4 flex items-center gap-3">
@@ -100,13 +98,13 @@
         type="button"
         :aria-label="color.name"
         :disabled="state !== 'playing' || index === current"
-        class="size-9 cursor-pointer transition-[transform,opacity] duration-150 ease-out active:scale-90 disabled:cursor-default disabled:opacity-30"
+        class="size-9 cursor-pointer transition duration-fast ease-glide active:scale-90 disabled:cursor-default disabled:opacity-30"
         :style="{ backgroundColor: color.hex }"
         @click="pick(index)"
       />
       <button
         type="button"
-        class="ml-auto cursor-pointer italic text-muted transition-colors duration-150 hover:text-foreground"
+        class="btn btn-quiet ml-auto"
         @click="restart"
       >
         New game

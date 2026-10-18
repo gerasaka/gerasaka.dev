@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import GameOverlay from '~/games/GameOverlay.vue';
   import { createGame, step, turn, type Point } from './snake';
 
   type GameState = 'idle' | 'playing' | 'paused' | 'over';
@@ -94,9 +95,8 @@
   }
 
   onMounted(() => {
-    const styles = getComputedStyle(document.documentElement);
-    colors.snake = styles.getPropertyValue('--color-foreground').trim() || colors.snake;
-    colors.food = styles.getPropertyValue('--color-primary-500').trim() || colors.food;
+    colors.snake = themeColor('foreground');
+    colors.food = themeColor('accent');
 
     const dpr = window.devicePixelRatio || 1;
     if (canvas.value) {
@@ -125,33 +125,30 @@
 <template>
   <div class="w-full max-w-md">
     <div class="flex items-baseline justify-between">
-      <p class="text-muted text-sm">Score</p>
+      <p class="text-caption">Score</p>
       <p class="font-pixel text-3xl leading-none" aria-live="polite">{{ score }}</p>
     </div>
 
     <div
-      class="relative mt-3 aspect-square w-full border border-muted/30 cursor-pointer"
+      class="relative mt-3 aspect-square w-full border border-line cursor-pointer"
       @click="state === 'over' && restart()"
     >
       <canvas ref="canvas" class="block h-full w-full" role="img" aria-label="Snake game board" />
 
-      <div
-        v-if="state !== 'playing'"
-        class="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-surface/80 text-center"
-      >
+      <GameOverlay v-if="state !== 'playing'">
         <template v-if="state === 'idle'">
           <p class="font-pixel text-2xl">Press an arrow key to start</p>
-          <p class="text-muted text-sm">Arrow keys or WASD to move · Space to pause</p>
+          <p class="text-caption">Arrow keys or WASD to move · Space to pause</p>
         </template>
         <template v-else-if="state === 'paused'">
           <p class="font-pixel text-3xl">Paused</p>
-          <p class="text-muted text-sm">Space to resume</p>
+          <p class="text-caption">Space to resume</p>
         </template>
         <template v-else>
           <p class="font-pixel text-3xl">{{ game.won ? 'You win!' : 'Game over' }}</p>
-          <p class="text-muted text-sm">Score: {{ score }} — press an arrow key to play again</p>
+          <p class="text-caption">Score: {{ score }} — press an arrow key to play again</p>
         </template>
-      </div>
+      </GameOverlay>
     </div>
   </div>
 </template>
