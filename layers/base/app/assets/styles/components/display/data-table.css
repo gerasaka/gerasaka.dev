@@ -1,0 +1,31 @@
+@utility data-table {
+  @apply w-full border-collapse text-left text-sm tabular-nums;
+
+  & caption {
+    @apply pb-3 text-left text-caption;
+  }
+
+  & th {
+    @apply border-b border-line-strong px-3 py-2 font-medium whitespace-nowrap text-muted;
+  }
+
+  & td {
+    @apply border-b border-line px-3 py-2.5 text-foreground;
+  }
+
+  & :is(th, td):first-child {
+    @apply ps-0;
+  }
+
+  & :is(th, td):last-child {
+    @apply pe-0;
+  }
+
+  & tbody tr {
+    @apply transition-colors duration-fast ease-glide;
+  }
+
+  & tbody tr:hover {
+    @apply bg-surface-subtle;
+  }
+}

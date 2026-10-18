@@ -1,0 +1,28 @@
+@utility field {
+  @apply min-h-9 w-full rounded-md border border-line-strong bg-surface px-3 py-1.5 text-base text-foreground
+    outline-none transition-colors duration-fast ease-glide sm:text-sm
+    placeholder:text-muted aria-invalid:border-danger
+    disabled:cursor-not-allowed disabled:opacity-40;
+
+  &:focus-visible {
+    @apply border-focus outline-2 outline-solid outline-focus;
+    outline-offset: -1px;
+  }
+
+  &:where(select) {
+    @apply appearance-none pr-9;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23737373' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+    background-position: right --spacing(3) center;
+    background-repeat: no-repeat;
+    background-size: 1rem;
+  }
+}
+
+@utility form-item {
+  @apply flex flex-col gap-1.5;
+}
+
+@utility form-error {
+  @apply text-sm text-danger;
+}

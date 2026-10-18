@@ -1,0 +1,49 @@
+@utility chip {
+  --chip-h: --spacing(7);
+  --chip-px: --spacing(2.5);
+
+  @apply inline-flex w-fit shrink-0 items-center gap-1.5 rounded-full border border-line-strong bg-surface
+    text-sm whitespace-nowrap text-foreground select-none duration-fast ease-glide;
+
+  height: var(--chip-h);
+  padding-inline: var(--chip-px);
+  transition-property: color, background-color, border-color;
+
+  &:is(a, button, label) {
+    @apply cursor-pointer hover:bg-surface-hover;
+  }
+
+  /* Selectable: `aria-pressed` on a button, or a visually hidden checkbox inside a label. */
+  &[aria-pressed='true'],
+  &:has(> input:checked) {
+    @apply border-accent-strong bg-accent-subtle text-accent-strong;
+  }
+
+  & > input {
+    @apply sr-only;
+  }
+
+  &:has(> input:focus-visible) {
+    @apply outline-2 outline-offset-2 outline-focus outline-solid;
+  }
+
+  /* Removable: a trailing dismiss button. Give it an aria-label naming the chip. */
+  & > button {
+    @apply -me-1 inline-flex size-5 cursor-pointer items-center justify-center rounded-full text-muted
+      transition-colors duration-fast ease-glide hover:bg-surface-hover hover:text-foreground;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'],
+  &:has(> input:disabled) {
+    @apply pointer-events-none cursor-not-allowed opacity-40;
+  }
+}
+
+/* ===== Sizes ===== */
+
+@utility chip-sm {
+  --chip-h: --spacing(6);
+  --chip-px: --spacing(2);
+  @apply gap-1 text-xs;
+}

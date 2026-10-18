@@ -1,0 +1,43 @@
+@utility callout {
+  @apply grid items-baseline gap-x-2 gap-y-1 rounded-md px-3 py-2.5 text-sm text-foreground;
+  grid-template-columns: 1rem 1fr;
+  background-color: var(--callout-bg);
+
+  &::before {
+    @apply text-center font-bold;
+
+    color: var(--callout-fg);
+    content: var(--callout-icon);
+    content: var(--callout-icon) / '';
+  }
+
+  & > * {
+    @apply col-start-2;
+  }
+}
+
+/* ===== Variants ===== */
+
+@utility callout-danger {
+  --callout-bg: var(--color-danger-subtle);
+  --callout-fg: var(--color-danger);
+  --callout-icon: '\2715';
+}
+
+@utility callout-warning {
+  --callout-bg: var(--color-warning-subtle);
+  --callout-fg: var(--color-warning);
+  --callout-icon: '!';
+}
+
+@utility callout-info {
+  --callout-bg: var(--color-info-subtle);
+  --callout-fg: var(--color-info);
+  --callout-icon: 'i';
+}
+
+@utility callout-success {
+  --callout-bg: var(--color-success-subtle);
+  --callout-fg: var(--color-success);
+  --callout-icon: '\2713';
+}

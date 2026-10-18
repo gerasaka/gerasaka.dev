@@ -1,0 +1,32 @@
+@utility card {
+  @apply block rounded-md border border-line p-5;
+}
+
+@utility card-link {
+  @apply relative isolate cursor-pointer duration-base ease-glide;
+
+  transition-property: translate, border-color;
+
+  &::before {
+    @apply absolute -inset-px bg-surface-raised opacity-0 shadow-raised transition-opacity
+      duration-base ease-glide;
+
+    content: '';
+    z-index: -1;
+    border-radius: inherit;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @apply -translate-y-0.5 border-transparent;
+    }
+
+    &:hover::before {
+      @apply opacity-100;
+    }
+  }
+
+  &:active {
+    @apply translate-y-0;
+  }
+}

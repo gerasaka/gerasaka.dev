@@ -1,0 +1,38 @@
+@utility checkbox {
+  @apply grid size-4 shrink-0 cursor-pointer appearance-none place-content-center rounded-sm
+    border border-line-strong bg-surface transition-colors duration-fast ease-glide
+    aria-invalid:border-danger disabled:cursor-not-allowed disabled:opacity-40;
+
+  &::before {
+    @apply size-2.5 scale-50 bg-on-foreground opacity-0 duration-fast ease-glide;
+
+    content: '';
+    transition-property: opacity, scale;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0, 43% 62%);
+  }
+
+  &:checked,
+  &:indeterminate {
+    background-color: var(--color-foreground);
+    border-color: var(--color-foreground);
+  }
+
+  &:checked::before,
+  &:indeterminate::before {
+    opacity: 1;
+    scale: 1;
+  }
+
+  &:indeterminate::before {
+    clip-path: inset(40% 10%);
+  }
+}
+
+@utility radio {
+  @apply checkbox rounded-full;
+
+  &::before {
+    @apply size-1.5 rounded-full;
+    clip-path: none;
+  }
+}

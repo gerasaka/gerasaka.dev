@@ -1,0 +1,20 @@
+@utility pagination {
+  @apply flex flex-wrap items-center gap-1 text-sm;
+
+  & :is(a, button) {
+    @apply inline-flex h-8 min-w-8 cursor-pointer items-center justify-center gap-1 rounded-md px-2
+      text-foreground tabular-nums transition-colors duration-fast ease-glide hover:bg-surface-hover;
+  }
+
+  & [aria-current='page'] {
+    @apply pointer-events-none bg-foreground text-on-foreground;
+  }
+
+  & :is(a, button):is(:disabled, [aria-disabled='true']) {
+    @apply pointer-events-none cursor-not-allowed opacity-40;
+  }
+
+  & span {
+    @apply inline-flex h-8 min-w-8 items-center justify-center text-muted;
+  }
+}

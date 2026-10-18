@@ -1,0 +1,22 @@
+@utility breadcrumb {
+  @apply flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted;
+
+  & > li {
+    @apply inline-flex items-center gap-2;
+  }
+
+  & > li + li::before {
+    @apply text-line-strong;
+
+    content: '/';
+    content: '/' / '';
+  }
+
+  & a {
+    @apply rounded-sm transition-colors duration-fast ease-glide hover:text-foreground;
+  }
+
+  & [aria-current='page'] {
+    @apply text-foreground;
+  }
+}

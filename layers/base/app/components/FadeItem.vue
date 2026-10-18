@@ -7,13 +7,7 @@
     slots: Object as SlotsType<{ default: () => VNode[] }>,
     setup(_, { slots }) {
       const fadeIn = inject(FadeInKey);
-      /*
-       * Only the first load (server render and its hydration) animates.
-       * Client navigations get the view-transition crossfade, and items mounted
-       * later (filters, v-if) appear immediately instead of animating twice.
-       */
-      const animate = import.meta.server || useNuxtApp().isHydrating;
-      const delay = animate && fadeIn ? fadeIn.next() : 0;
+      const delay = fadeIn ? fadeIn.next() : 0;
 
       return () => {
         if (!slots.default) return null;
@@ -28,8 +22,6 @@
             '[FadeItem] Expected exactly one child; wrap siblings in a single element or give each its own <FadeItem>.',
           );
         }
-
-        if (!animate) return vnode;
 
         return cloneVNode(vnode, {
           class: 'fade-in',

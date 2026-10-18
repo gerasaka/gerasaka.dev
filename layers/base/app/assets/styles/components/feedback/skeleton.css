@@ -1,0 +1,14 @@
+@utility skeleton {
+  @apply block animate-pulse rounded-md bg-surface-subtle;
+}
+
+@utility skeleton-text {
+  @apply skeleton w-full rounded-sm;
+
+  height: 0.6lh;
+  margin-block: 0.2lh;
+
+  &:last-child:not(:first-child) {
+    @apply w-3/5;
+  }
+}

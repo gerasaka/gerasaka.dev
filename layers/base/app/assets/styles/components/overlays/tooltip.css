@@ -1,0 +1,29 @@
+@utility tooltip {
+  @apply relative;
+
+  &::after {
+    @apply pointer-events-none absolute left-1/2 rounded-sm bg-foreground text-xs font-medium
+      whitespace-nowrap text-on-foreground opacity-0 duration-fast ease-glide;
+
+    transition-property: opacity, translate;
+    content: attr(data-tooltip);
+    bottom: calc(100% + --spacing(1.5));
+    padding: --spacing(1) --spacing(2);
+    font-style: normal;
+    translate: -50% 2px;
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+    translate: -50% 0;
+    transition-delay: 400ms;
+  }
+
+  /* Held open from script, e.g. to confirm an action. Shows at once, without the hover delay. */
+  &[data-tooltip-open]::after {
+    opacity: 1;
+    translate: -50% 0;
+    transition-delay: 0ms;
+  }
+}

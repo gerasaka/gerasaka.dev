@@ -1,0 +1,19 @@
+@utility dialog {
+  @apply motion-pop motion-backdrop m-auto overflow-y-auto elevation-overlay rounded-md p-6 text-foreground;
+
+  width: min(100% - 2rem, 28rem);
+  max-height: calc(100dvh - 2rem);
+}
+
+@utility dialog-drawer {
+  --motion-x: 100%;
+  --motion-scale: 1;
+  --motion-ease: var(--ease-settle);
+  @apply dialog;
+
+  margin: 0 0 0 auto;
+  width: min(100% - 2rem, 24rem);
+  height: 100dvh;
+  max-height: none;
+  border-radius: 0;
+}

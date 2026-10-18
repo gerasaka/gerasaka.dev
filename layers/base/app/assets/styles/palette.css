@@ -1,8 +1,3 @@
-/*
- * Raw palette. Components must not use these directly; use the semantic
- * tokens in theme.css so themes can remap them.
- * `static` keeps every variable emitted so the /design page can read them.
- */
 @theme static {
   --color-*: initial;
 
@@ -33,11 +28,7 @@
   --color-blue-900: #162c47;
   --color-blue-950: #0d1b2b;
 
-  /*
-   * Status hues: muted and earthy to sit beside the neutral grays. Generated in
-   * OKLCH from the 500 anchor at a fixed hue. Every 500 passes WCAG AA (4.5:1)
-   * on white, gray-100, and its own 50; every 400 passes on gray-900/950.
-   */
+  /* ===== Status Hues ===== */
   --color-brick-50: #fff4f2;
   --color-brick-100: #ffe4e1;
   --color-brick-200: #fdc9c2;

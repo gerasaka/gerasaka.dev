@@ -1,0 +1,11 @@
+@utility popover {
+  @apply motion-pop elevation-overlay m-auto min-w-40 rounded-md p-1 text-foreground;
+
+  @supports (position-area: block-end) {
+    --motion-origin: top left;
+    margin: 0;
+    margin-block-start: --spacing(1);
+    position-area: block-end span-inline-end;
+    position-try-fallbacks: flip-block;
+  }
+}

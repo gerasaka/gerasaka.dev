@@ -3,13 +3,43 @@
 /* Apps extending this layer build from their own directory, so scan the layer explicitly. */
 @source "../..";
 
-/* Foundations: color, typography, shape, motion, layout. */
+/* ===== Foundations ===== */
+
 @import './palette.css';
 @import './theme.css';
 @import './typography.css';
 @import './shape.css';
+@import './elevation.css';
 @import './motion.css';
 @import './layout.css';
 @import './base.css';
 
-@import './components.css';
+/* ===== Components ===== */
+
+@import './components/actions/button.css';
+@import './components/actions/link.css';
+@import './components/actions/chip.css';
+
+@import './components/inputs/field.css';
+@import './components/inputs/checkbox.css';
+@import './components/inputs/switch.css';
+@import './components/inputs/slider.css';
+
+@import './components/feedback/callout.css';
+@import './components/feedback/badge.css';
+@import './components/feedback/progress.css';
+@import './components/feedback/skeleton.css';
+
+@import './components/overlays/dialog.css';
+@import './components/overlays/popover.css';
+@import './components/overlays/menu.css';
+@import './components/overlays/tooltip.css';
+
+@import './components/navigation/tabs.css';
+@import './components/navigation/breadcrumb.css';
+@import './components/navigation/pagination.css';
+
+@import './components/display/card.css';
+@import './components/display/data-table.css';
+
+@import './components/disclosure/disclosure.css';

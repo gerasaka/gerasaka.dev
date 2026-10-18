@@ -1,0 +1,35 @@
+@utility badge {
+  --badge-bg: var(--color-surface-subtle);
+  --badge-fg: var(--color-foreground);
+  @apply inline-flex w-fit items-center gap-1 rounded-sm px-1.5 py-0.5 text-xs font-medium whitespace-nowrap;
+
+  background-color: var(--badge-bg);
+  color: var(--badge-fg);
+}
+
+/* ===== Variants ===== */
+
+@utility badge-accent {
+  --badge-bg: var(--color-accent-subtle);
+  --badge-fg: var(--color-accent-strong);
+}
+
+@utility badge-danger {
+  --badge-bg: var(--color-danger-subtle);
+  --badge-fg: var(--color-danger);
+}
+
+@utility badge-warning {
+  --badge-bg: var(--color-warning-subtle);
+  --badge-fg: var(--color-warning);
+}
+
+@utility badge-success {
+  --badge-bg: var(--color-success-subtle);
+  --badge-fg: var(--color-success);
+}
+
+@utility badge-info {
+  --badge-bg: var(--color-info-subtle);
+  --badge-fg: var(--color-info);
+}

@@ -1,0 +1,56 @@
+@utility slider {
+  --slider-fill: 0%;
+  --slider-track: var(--color-line-strong);
+  --slider-active: var(--color-foreground);
+
+  @apply h-5 w-full cursor-pointer appearance-none rounded-full bg-transparent
+    disabled:cursor-not-allowed disabled:opacity-40;
+
+  &::-webkit-slider-runnable-track {
+    @apply h-1 rounded-full;
+
+    background: linear-gradient(
+      to right,
+      var(--slider-active) var(--slider-fill),
+      var(--slider-track) var(--slider-fill)
+    );
+  }
+
+  &::-moz-range-track {
+    @apply h-1 rounded-full;
+    background-color: var(--slider-track);
+  }
+
+  &::-moz-range-progress {
+    @apply h-1 rounded-full;
+
+    background-color: var(--slider-active);
+  }
+
+  &::-webkit-slider-thumb {
+    @apply size-4 appearance-none rounded-full border-0 bg-surface duration-fast ease-glide;
+
+    transition-property: scale;
+    margin-top: calc((--spacing(1) - --spacing(4)) / 2);
+    box-shadow:
+      0 0 0 1px var(--slider-active),
+      0 1px 2px var(--color-shadow);
+  }
+
+  &::-moz-range-thumb {
+    @apply size-4 rounded-full border-0 bg-surface duration-fast ease-glide;
+
+    transition-property: scale;
+    box-shadow:
+      0 0 0 1px var(--slider-active),
+      0 1px 2px var(--color-shadow);
+  }
+
+  &:active::-webkit-slider-thumb {
+    scale: 1.15;
+  }
+
+  &:active::-moz-range-thumb {
+    scale: 1.15;
+  }
+}
