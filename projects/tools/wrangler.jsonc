@@ -1,12 +1,10 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "gerasaka-tools",
+  "name": "grsk-tools",
   "compatibility_date": "2026-08-30",
   "assets": {
     "directory": "./.output/public/",
-    "not_found_handling": "404-page"
+    "not_found_handling": "404-page",
   },
-  // A route (not a custom domain) so tools from other repos can claim
-  // more specific paths like tools.gerasaka.dev/log-formatter*.
-  "routes": [{ "pattern": "tools.gerasaka.dev/*", "zone_name": "gerasaka.dev" }]
+  "routes": [{ "pattern": "tools.gerasaka.dev/*", "zone_name": "gerasaka.dev" }],
 }
