@@ -1,0 +1,5 @@
+@layer components {
+  .card {
+    @apply hover:bg-[#f1f1f1] transition-colors duration-300 p-4;
+  }
+}
