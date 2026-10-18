@@ -70,29 +70,30 @@
   <div v-else-if="node.type === 'instruction'" class="xml-punct">{{ `${pad}<?${node.target} ${node.value}?>` }}</div>
 </template>
 
+<!-- GitHub's light and dark syntax palettes, matching the prose code blocks. -->
 <style scoped>
   .xml-punct {
-    color: #6a737d;
+    color: light-dark(#6a737d, #8b949e);
   }
 
   .xml-tag {
-    color: #22863a;
+    color: light-dark(#22863a, #7ee787);
   }
 
   .xml-attr {
-    color: #6f42c1;
+    color: light-dark(#6f42c1, #d2a8ff);
   }
 
   .xml-value {
-    color: #032f62;
+    color: light-dark(#032f62, #a5d6ff);
   }
 
   .xml-text {
-    color: #24292e;
+    color: var(--color-foreground);
   }
 
   .xml-comment {
-    color: #6a737d;
+    color: light-dark(#6a737d, #8b949e);
     font-style: italic;
   }
 </style>

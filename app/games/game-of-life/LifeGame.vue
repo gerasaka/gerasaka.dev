@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import GameOverlay from '~/games/GameOverlay.vue';
   import { createBoard, population, step } from './life';
 
   type GameState = 'idle' | 'playing' | 'paused' | 'over';
@@ -94,9 +95,8 @@
   }
 
   onMounted(() => {
-    const styles = getComputedStyle(document.documentElement);
-    colors.cell = styles.getPropertyValue('--color-foreground').trim() || colors.cell;
-    colors.grid = styles.getPropertyValue('--color-muted').trim() || colors.grid;
+    colors.cell = themeColor('foreground');
+    colors.grid = themeColor('muted');
 
     const dpr = window.devicePixelRatio || 1;
     if (canvas.value) {
@@ -123,7 +123,7 @@
 <template>
   <div class="w-full max-w-md">
     <div class="flex items-baseline justify-between">
-      <p class="text-muted text-sm">Generation</p>
+      <p class="text-caption">Generation</p>
       <p class="font-pixel text-3xl leading-none">{{ generation }}</p>
     </div>
 
@@ -139,33 +139,30 @@
         aria-label="Conway's Game of Life board"
       />
 
-      <div
-        v-if="state !== 'playing'"
-        class="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-surface/80 text-center"
-      >
+      <GameOverlay v-if="state !== 'playing'">
         <p v-if="state === 'idle'" class="font-pixel text-2xl">Click to start</p>
         <template v-else-if="state === 'paused'">
           <p class="font-pixel text-3xl">Paused</p>
-          <p class="text-muted text-sm">Press Resume to continue</p>
+          <p class="text-caption">Press Resume to continue</p>
         </template>
         <template v-else>
           <p class="font-pixel text-3xl">All cells died</p>
-          <p class="text-muted text-sm">Lasted {{ generation }} generations</p>
+          <p class="text-caption">Lasted {{ generation }} generations</p>
           <button
             type="button"
-            class="mt-2 cursor-pointer italic text-muted transition-colors duration-150 hover:text-foreground"
+            class="btn btn-quiet mt-2"
             @click="restart"
           >
             Restart
           </button>
         </template>
-      </div>
+      </GameOverlay>
     </div>
 
     <div class="mt-4 flex items-baseline gap-6">
       <button
         type="button"
-        class="cursor-pointer italic text-muted transition-colors duration-150 hover:text-foreground disabled:cursor-default disabled:opacity-40 disabled:hover:text-muted"
+        class="btn btn-quiet"
         :disabled="state === 'idle' || state === 'over'"
         @click="togglePause"
       >
@@ -173,12 +170,12 @@
       </button>
       <button
         type="button"
-        class="cursor-pointer italic text-muted transition-colors duration-150 hover:text-foreground"
+        class="btn btn-quiet"
         @click="restart"
       >
         Restart
       </button>
-      <p class="ml-auto text-muted text-sm tabular-nums">{{ alive }} alive</p>
+      <p class="ml-auto text-caption tabular-nums">{{ alive }} alive</p>
     </div>
   </div>
 </template>

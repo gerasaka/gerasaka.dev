@@ -33,8 +33,9 @@ export const SEMANTIC_COLOR_GROUPS: { name: string; colors: SemanticColor[] }[] 
     name: 'Surface',
     colors: [
       { token: 'surface', usage: 'Page background' },
-      { token: 'surface-subtle', usage: 'Sunken: code, fields, tags. Tint, so it nests' },
-      { token: 'surface-raised', usage: 'Floating: menus, dialogs, popovers' },
+      { token: 'surface-subtle', usage: 'Sunken: badges, skeletons, tracks. Tint, so it nests' },
+      { token: 'surface-raised', usage: 'Level 1: raised cards and panels' },
+      { token: 'surface-overlay', usage: 'Level 2: menus, dialogs, popovers, toasts' },
       { token: 'surface-hover', usage: 'Hover tint on cards and rows' },
       { token: 'backdrop', usage: 'Behind modal dialogs' },
     ],
@@ -43,16 +44,21 @@ export const SEMANTIC_COLOR_GROUPS: { name: string; colors: SemanticColor[] }[] 
     name: 'Text',
     colors: [
       { token: 'foreground', usage: 'Primary text, solid button fill', contrast: { on: 'surface', min: 4.5 } },
+      {
+        token: 'foreground-soft',
+        usage: 'Reading text: paragraphs and posts',
+        contrast: { on: 'surface', min: 4.5 },
+      },
       { token: 'muted', usage: 'Secondary text, quiet actions', contrast: { on: 'surface', min: 4.5 } },
       { token: 'on-foreground', usage: 'Text on a foreground fill', contrast: { on: 'foreground', min: 4.5 } },
       { token: 'foreground-hover', usage: 'Solid button hover fill' },
     ],
   },
   {
-    name: 'Border',
+    name: 'Line',
     colors: [
-      { token: 'border', usage: 'Dividers, card edges' },
-      { token: 'border-strong', usage: 'Control outlines: inputs, checkboxes', contrast: { on: 'surface', min: 3 } },
+      { token: 'line', usage: 'Dividers, card edges' },
+      { token: 'line-strong', usage: 'Control outlines: inputs, checkboxes', contrast: { on: 'surface', min: 3 } },
     ],
   },
   {
@@ -61,7 +67,7 @@ export const SEMANTIC_COLOR_GROUPS: { name: string; colors: SemanticColor[] }[] 
       { token: 'accent', usage: 'Brand marks, indicators. Not text', contrast: { on: 'surface', min: 3 } },
       { token: 'accent-strong', usage: 'Link text', contrast: { on: 'surface', min: 4.5 } },
       { token: 'accent-strong-hover', usage: 'Link hover text', contrast: { on: 'surface', min: 4.5 } },
-      { token: 'accent-subtle', usage: 'Selected rows, active tabs' },
+      { token: 'accent-subtle', usage: 'Selected chips, accent badges' },
     ],
   },
   {
@@ -102,57 +108,53 @@ export const TYPE_STYLES = [
   { utility: 'text-heading', sample: 'Section heading', usage: 'Sections in a page' },
   { utility: 'text-subheading', sample: 'Card or dialog title', usage: 'UI headings, groups' },
   { utility: 'text-subtitle', sample: 'A short line that introduces the page', usage: 'Under a title' },
-  { utility: 'text-body', sample: 'Body text for paragraphs and general content.', usage: 'Default text' },
+  {
+    utility: 'text-body',
+    sample: 'Reading text, a step softer, so bold stands out.',
+    usage: 'Paragraphs, not UI',
+  },
   { utility: 'text-label', sample: 'Email address', usage: 'Form labels, short UI text' },
   { utility: 'text-caption', sample: 'Sep 30, 2026 · 4 min read', usage: 'Dates, counts, metadata' },
 ];
 
-export const GRID_COMPOSITIONS = [
-  {
-    name: 'Spread · 4 + 8',
-    usage: 'Title or label beside content. This page uses it for every section.',
-    cells: ['col-span-full sm:col-span-3 lg:col-span-4', 'col-span-full sm:col-span-5 lg:col-span-8'],
-  },
-  {
-    name: 'Halves · 6 + 6',
-    usage: 'Two equal ideas: before and after, input and output.',
-    cells: ['col-span-full sm:col-span-4 lg:col-span-6', 'col-span-full sm:col-span-4 lg:col-span-6'],
-  },
-  {
-    name: 'Quarters · 3 × 4',
-    usage: 'Card lists: games, tools, posts.',
-    cells: Array.from({ length: 4 }, () => 'col-span-2 sm:col-span-4 lg:col-span-3'),
-  },
-  {
-    name: 'Offset · 8 from 3',
-    usage: 'A reading column set off-center, the classic Swiss asymmetry.',
-    cells: ['col-span-full sm:col-span-6 sm:col-start-2 lg:col-span-8 lg:col-start-3'],
-  },
-];
-
-/** `ratio` is the width relative to container-wide, for the to-scale diagram. 65ch ≈ 36rem in the body font. */
+/** `ratio` is the width relative to container-wide, for the to-scale diagram. */
 export const CONTAINERS = [
-  { utility: 'container-prose', width: '65ch', ratio: '56%', usage: 'Long-form reading' },
-  { utility: 'container-main', width: '48rem', ratio: '75%', usage: 'Default page width' },
-  { utility: 'container-wide', width: '64rem', ratio: '100%', usage: 'Galleries and tools' },
+  { utility: 'container-main', width: '46rem', ratio: '72%', usage: 'Every page, articles included' },
+  { utility: 'container-wide', width: '64rem', ratio: '100%', usage: 'Tools, galleries, and this page' },
 ];
 
 export const SPACING = [
-  {
-    utility: 'gap-2',
-    value: '8px',
-    size: 'calc(var(--spacing) * 2)',
-    usage: 'Within a group: label and field, icon and text',
-  },
-  { utility: 'gap-4', value: '16px', size: 'calc(var(--spacing) * 4)', usage: 'Between items in a list' },
-  { utility: 'gap-8', value: '32px', size: 'calc(var(--spacing) * 8)', usage: 'Between groups' },
-  { utility: '*-section', value: '48–64px', size: 'var(--spacing-section)', usage: 'Between page sections' },
-  { utility: '*-page', value: '48–80px', size: 'var(--spacing-page)', usage: 'Page top and bottom, via page' },
-  { utility: '*-gutter', value: '32–80px', size: 'var(--spacing-gutter)', usage: 'Page sides, outside containers' },
+  { utility: 'gap-2', phone: '8px', desktop: '8px', usage: 'Within a group: label and field, icon and text' },
+  { utility: 'gap-4', phone: '16px', desktop: '16px', usage: 'Between items in a list' },
+  { utility: 'gap-8', phone: '32px', desktop: '32px', usage: 'Between groups' },
+  { utility: '*-section', phone: '48px', desktop: '64px', usage: 'Between page sections' },
+  { utility: '*-page', phone: '48px', desktop: '80px', usage: 'Page top and bottom, via page' },
+  { utility: '*-gutter', phone: '32px', desktop: '80px', usage: 'Page sides, outside containers' },
+];
+
+/** The annotated mock page: content blocks, with each gap drawn at its real size. */
+export type SpacingDemoRow =
+  | { kind: 'label' | 'field' | 'card' | 'heading' | 'text' }
+  | { kind: 'gap'; size: string; label?: string };
+
+export const SPACING_DEMO: SpacingDemoRow[] = [
+  { kind: 'label' },
+  { kind: 'gap', size: 'calc(var(--spacing) * 2)', label: 'gap-2 · 8px' },
+  { kind: 'field' },
+  { kind: 'gap', size: 'calc(var(--spacing) * 8)', label: 'gap-8 · 32px' },
+  { kind: 'card' },
+  { kind: 'gap', size: 'calc(var(--spacing) * 4)', label: 'gap-4 · 16px' },
+  { kind: 'card' },
+  { kind: 'gap', size: 'calc(var(--spacing) * 4)' },
+  { kind: 'card' },
+  { kind: 'gap', size: 'var(--spacing-section)', label: '*-section · 48–64px' },
+  { kind: 'heading' },
+  { kind: 'gap', size: 'calc(var(--spacing) * 2)', label: 'gap-2 · 8px' },
+  { kind: 'text' },
 ];
 
 export const RADII = [
-  { token: 'sm', usage: 'Small marks: tags, badges, kbd, tooltips' },
+  { token: 'sm', usage: 'Small marks: badges, checkboxes, tooltips, kbd' },
   { token: 'md', usage: 'Everything else: buttons, fields, cards, overlays' },
 ];
 
@@ -163,19 +165,31 @@ export const CORNERS = [
 ];
 
 export const ELEVATION = [
-  { name: 'Surface', className: 'bg-surface border border-border', usage: 'Level 0, the page itself' },
-  { name: 'Subtle', className: 'bg-surface-subtle', usage: 'Level 1, sunken content' },
-  { name: 'Overlay', className: 'bg-surface-raised shadow-overlay', usage: 'Menus, popovers, tooltips, toasts' },
-  { name: 'Modal', className: 'bg-surface-raised shadow-modal', usage: 'Dialogs only' },
+  { level: 0, name: 'Flat', utility: 'card', className: 'border border-line', usage: 'Most content. The default.' },
+  {
+    level: 1,
+    name: 'Raised',
+    utility: 'elevation-raised',
+    className: 'elevation-raised',
+    usage: 'A featured card or panel. Also where card-link rises on hover.',
+  },
+  {
+    level: 2,
+    name: 'Overlay',
+    utility: 'elevation-overlay',
+    className: 'elevation-overlay',
+    usage: 'Menus, popovers, dialogs, drawers, toasts.',
+  },
 ];
 
 export const DURATIONS = [
-  { token: 'fast', usage: 'Color and hover feedback' },
-  { token: 'base', usage: 'Small movement, state changes' },
-  { token: 'slow', usage: 'Elements entering the page; the ceiling for UI motion' },
+  { token: 'fast', usage: 'Hover, color, and every exit' },
+  { token: 'base', usage: 'Overlays opening, collapse, small movement' },
+  { token: 'slow', usage: 'Page entrance and the toast stack' },
 ];
 
 export const EASINGS = [
-  { token: 'out', usage: 'Entering and responding' },
-  { token: 'in-out', usage: 'Moving and morphing on screen' },
+  { token: 'glide', usage: 'Appearing, leaving, changing. The default' },
+  { token: 'sweep', usage: 'Movement across the screen: collapse, progress' },
+  { token: 'settle', usage: 'Panels sliding in from an edge: the drawer' },
 ];

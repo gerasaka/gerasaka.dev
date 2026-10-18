@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  import { formatReadingTime } from '~/writes/reading-time';
+
   const route = useRoute();
 
   const { data: post } = await useAsyncData(`writes-${route.path}`, () =>
@@ -16,23 +18,15 @@
 </script>
 
 <template>
-  <main class="bg-surface min-h-svh">
-    <article class="main-container">
-      <NuxtLink
-        to="/writes"
-        class="group inline-flex w-fit items-center gap-1.5 text-muted transition-colors duration-150 hover:text-foreground italic"
-      >
-        <span
-          aria-hidden="true"
-          class="transition-transform duration-150 ease-elegant group-hover:-translate-x-0.75"
-        >
-          &larr;
-        </span>
+  <main class="min-h-svh">
+    <article class="container-main page">
+      <NuxtLink to="/writes" class="btn btn-quiet">
+        <span aria-hidden="true">&larr;</span>
         All posts
       </NuxtLink>
 
       <template v-if="post">
-        <p class="text-muted text-sm mt-12">
+        <p class="text-caption mt-12">
           {{ formatDate(post.date) }}
           <span aria-hidden="true"> · </span>
           {{ formatReadingTime(post.body) }}
@@ -40,9 +34,9 @@
         <h1 class="text-title mt-2">
           {{ post.title }}
         </h1>
-        <p v-if="post.tags?.length" class="text-muted text-sm mt-4">
-          {{ post.tags.join(' · ') }}
-        </p>
+        <ul v-if="post.tags?.length" class="mt-4 flex flex-wrap gap-2">
+          <li v-for="tag in post.tags" :key="tag" class="badge">{{ tag }}</li>
+        </ul>
 
         <ContentRenderer :value="post" class="prose-write mt-10" />
       </template>

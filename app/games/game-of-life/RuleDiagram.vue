@@ -8,20 +8,20 @@
 
 <template>
   <div class="flex shrink-0 items-center gap-2" aria-hidden="true">
-    <div class="grid grid-cols-3 gap-0.5 border border-muted/30 p-0.5">
+    <div class="grid grid-cols-3 gap-0.5 border border-line p-0.5">
       <span
         v-for="(cell, i) in cells"
         :key="i"
         class="size-3"
         :class="
-          cell !== '#' ? 'bg-muted/10' : i === CENTER ? 'bg-primary-500' : 'bg-foreground'
+          cell !== '#' ? 'bg-surface-subtle' : i === CENTER ? 'bg-accent' : 'bg-foreground'
         "
       />
     </div>
 
-    <span class="text-muted text-sm">&rarr;</span>
+    <span class="text-caption">&rarr;</span>
 
-    <div class="grid grid-cols-3 gap-0.5 border border-muted/30 p-0.5">
+    <div class="grid grid-cols-3 gap-0.5 border border-line p-0.5">
       <span
         v-for="(cell, i) in cells"
         :key="i"
@@ -29,11 +29,11 @@
         :class="
           i === CENTER
             ? becomes
-              ? 'bg-primary-500'
-              : 'bg-muted/10'
+              ? 'bg-accent'
+              : 'bg-surface-subtle'
             : cell === '#'
               ? 'bg-foreground/20'
-              : 'bg-muted/10'
+              : 'bg-surface-subtle'
         "
       />
     </div>
