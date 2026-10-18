@@ -1,11 +1,6 @@
 <script lang="ts" setup>
   import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
-  /*
-   * Mount once per app. Toasts stack like a deck and fan out on hover or focus,
-   * pausing their timers. Lives in the top layer so it sits above open dialogs;
-   * re-showing on each new toast moves it back above anything opened since.
-   */
   const GAP = 8;
   const PEEK = 10;
   const VISIBLE = 3;
@@ -20,14 +15,18 @@
 
   function offsetOf(index: number) {
     let offset = 0;
-    for (const item of newestFirst.value.slice(0, index)) offset += (heights.value[item.id] ?? 0) + GAP;
+    for (const item of newestFirst.value.slice(0, index)) {
+      offset += (heights.value[item.id] ?? 0) + GAP;
+    }
     return offset;
   }
 
   const listHeight = computed(() => {
     const count = newestFirst.value.length;
     if (!count) return 0;
-    if (expanded.value) return offsetOf(count - 1) + (heights.value[newestFirst.value[count - 1]!.id] ?? 0);
+    if (expanded.value) {
+      return offsetOf(count - 1) + (heights.value[newestFirst.value[count - 1]!.id] ?? 0);
+    }
     return frontHeight.value + Math.min(count - 1, VISIBLE - 1) * PEEK;
   });
 
@@ -51,13 +50,13 @@
 
   const observer = import.meta.client
     ? new ResizeObserver((entries) => {
-      const next = { ...heights.value };
-      for (const entry of entries) {
-        const el = entry.target as HTMLElement;
-        next[Number(el.dataset.id)] = el.offsetHeight;
-      }
-      heights.value = next;
-    })
+        const next = { ...heights.value };
+        for (const entry of entries) {
+          const el = entry.target as HTMLElement;
+          next[Number(el.dataset.id)] = el.offsetHeight;
+        }
+        heights.value = next;
+      })
     : undefined;
 
   function measure(el: unknown) {
@@ -107,21 +106,22 @@
       tag="ol"
       role="status"
       aria-live="polite"
-      class="relative transition-[height] duration-slow ease-out"
+      class="toast-list relative"
       :style="{ height: `${listHeight}px` }"
-      enter-from-class="opacity-0 [translate:0_100%]"
-      leave-to-class="opacity-0 [translate:0_50%]"
+      enter-from-class="toast-enter-from"
+      leave-active-class="toast-leave-active"
+      leave-to-class="toast-leave-to"
     >
       <li
         v-for="item in toasts"
         :key="item.id"
-        class="toast absolute inset-x-0 bottom-0 origin-top overflow-hidden transition-[transform,translate,opacity,height] duration-slow ease-out"
+        class="toast absolute inset-x-0 bottom-0 origin-top overflow-hidden"
         :style="styleOf(item.id)"
       >
         <div
           :ref="measure"
           :data-id="item.id"
-          class="flex items-start gap-3 p-4 transition-opacity duration-base ease-out"
+          class="toast-body transition-opacity duration-base ease-glide"
           :class="{ 'opacity-0': !expanded && indexOf(item.id) > 0 }"
         >
           <div class="min-w-0 flex-1">
@@ -141,3 +141,35 @@
     </TransitionGroup>
   </section>
 </template>
+
+<style scoped>
+  @reference "#base/app/assets/styles/index.css";
+
+  .toast-list {
+    @apply duration-base ease-glide;
+    transition-property: height;
+  }
+
+  .toast {
+    @apply elevation-overlay rounded-md text-foreground duration-base ease-glide;
+    transition-property: transform, translate, opacity, height;
+  }
+
+  .toast-enter-from {
+    opacity: 0;
+    translate: 0 100%;
+  }
+
+  .toast-leave-active {
+    @apply duration-fast;
+  }
+
+  .toast-leave-to {
+    opacity: 0;
+    translate: 0 50%;
+  }
+
+  .toast-body {
+    @apply flex items-start gap-3 p-4;
+  }
+</style>

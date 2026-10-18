@@ -1,0 +1,16 @@
+@utility tabs {
+  @apply flex gap-x-6 overflow-x-auto border-b border-line;
+
+  scrollbar-width: none;
+}
+
+@utility tab {
+  @apply -mb-px flex shrink-0 cursor-pointer items-center gap-2 border-b-2 border-transparent py-3 text-sm
+    whitespace-nowrap text-muted transition-colors duration-fast ease-glide hover:text-foreground
+    disabled:cursor-not-allowed disabled:opacity-40;
+
+  &[aria-selected='true'],
+  &[aria-current]:not([aria-current='false']) {
+    @apply border-foreground text-foreground;
+  }
+}

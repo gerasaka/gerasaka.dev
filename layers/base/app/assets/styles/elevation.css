@@ -1,0 +1,21 @@
+@theme static {
+  --shadow-*: initial;
+  --shadow-raised:
+    0 1px 2px color-mix(in oklab, var(--color-shadow) 40%, transparent),
+    0 4px 12px -4px color-mix(in oklab, var(--color-shadow) 50%, transparent);
+  --shadow-overlay:
+    0 1px 2px color-mix(in oklab, var(--color-shadow) 40%, transparent),
+    0 8px 16px -6px color-mix(in oklab, var(--color-shadow) 50%, transparent),
+    0 24px 48px -16px
+      light-dark(color-mix(in oklab, var(--color-shadow) 70%, transparent), var(--color-shadow));
+}
+
+@utility elevation-raised {
+  background-color: var(--color-surface-raised);
+  box-shadow: var(--shadow-raised);
+}
+
+@utility elevation-overlay {
+  background-color: var(--color-surface-overlay);
+  box-shadow: var(--shadow-overlay);
+}

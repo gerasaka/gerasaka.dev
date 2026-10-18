@@ -1,0 +1,41 @@
+@utility disclosure {
+  @apply motion-collapse;
+
+  & > summary {
+    @apply inline-flex cursor-pointer list-none items-center gap-2 rounded-sm text-label select-none;
+  }
+
+  & > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  & > summary::after {
+    @apply size-2 shrink-0 -translate-y-0.5 rotate-45 border-muted duration-base ease-glide;
+
+    content: '';
+    border-right-width: 1.5px;
+    border-bottom-width: 1.5px;
+    transition-property: rotate, translate;
+  }
+
+  &[open] > summary::after {
+    @apply translate-y-0.5;
+    rotate: 225deg;
+  }
+
+  & > :not(summary) {
+    @apply text-body pt-2 text-muted;
+  }
+}
+
+@utility accordion {
+  @apply flex flex-col border-y border-line divide-y divide-line;
+
+  & > details > summary {
+    @apply flex w-full justify-between gap-4 py-3;
+  }
+
+  & > details > :not(summary) {
+    @apply pt-0 pb-4;
+  }
+}

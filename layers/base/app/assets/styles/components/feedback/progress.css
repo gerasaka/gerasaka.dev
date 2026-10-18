@@ -1,0 +1,70 @@
+@utility progress {
+  @apply block h-1.5 w-full appearance-none overflow-hidden rounded-full border-0 bg-surface-subtle;
+
+  color: var(--color-foreground);
+
+  &::-webkit-progress-bar {
+    background-color: transparent;
+  }
+
+  &::-webkit-progress-value {
+    @apply rounded-full bg-current duration-base ease-glide;
+    transition-property: width;
+  }
+
+  &::-moz-progress-bar {
+    @apply rounded-full bg-current;
+  }
+
+  /* Browsers don't render pseudo-elements on <progress>, so the sweep is a moving background. */
+  &:indeterminate {
+    @apply animate-progress;
+
+    background-image: linear-gradient(currentColor, currentColor);
+    background-repeat: no-repeat;
+    background-size: 40% 100%;
+  }
+
+  &:indeterminate::-moz-progress-bar {
+    background-color: transparent;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &:indeterminate {
+      animation-duration: 2.4s !important;
+      animation-iteration-count: infinite !important;
+    }
+  }
+}
+
+/* ===== Variants ===== */
+
+@utility progress-accent {
+  color: var(--color-accent-strong);
+}
+
+@utility progress-danger {
+  color: var(--color-danger);
+}
+
+@utility progress-warning {
+  color: var(--color-warning);
+}
+
+@utility progress-success {
+  color: var(--color-success);
+}
+
+/* ===== Spinner ===== */
+
+@utility spinner {
+  @apply inline-block shrink-0 animate-spinner rounded-full border-2 border-current border-r-transparent;
+
+  width: 1em;
+  height: 1em;
+
+  @media (prefers-reduced-motion: reduce) {
+    animation-duration: 1.5s !important;
+    animation-iteration-count: infinite !important;
+  }
+}

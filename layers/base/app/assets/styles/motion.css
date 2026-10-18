@@ -1,70 +1,57 @@
 @theme static {
-  /*
-   * UI motion stays under 300ms: 300 is the ceiling (slow), not the baseline.
-   * Exits should use a shorter step than their enter.
-   */
   --transition-duration-fast: 150ms;
-  --transition-duration-base: 200ms;
-  --transition-duration-slow: 300ms;
+  --transition-duration-base: 250ms;
+  --transition-duration-slow: 500ms;
 
   /*
-   * No `ease-in`: it delays the first frames, the moment users watch most.
-   * Exits use `ease-out` too, just faster. `ease-linear` stays for constant motion.
+   * No ease-in curve: it delays the first frames, the moment users watch most.
+   * Glide for things appearing, leaving, or changing; sweep for movement across the screen;
+   * settle for panels sliding in from an edge. `linear` stays for constant motion.
    */
   --ease-*: initial;
-  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-glide: cubic-bezier(0.5, 1, 0.85, 1);
+  --ease-sweep: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-settle: cubic-bezier(0.32, 0.72, 0, 1);
+
+  /* Constant speed reads as progress; a curve would read as stutter. */
+  --animate-spinner: spinner 0.6s linear infinite;
+
+  @keyframes spinner {
+    to {
+      rotate: 1turn;
+    }
+  }
+
+  --animate-progress: progress 1.2s var(--ease-sweep) infinite;
+
+  /* For a segment 40% of the track wide: these positions start and end fully off the track. */
+  @keyframes progress {
+    from {
+      background-position-x: -66.67%;
+    }
+    to {
+      background-position-x: 166.67%;
+    }
+  }
 }
 
-/*
- * One-shot entrance fade, used by <FadeIn>/<FadeItem> on the first page load.
- * Later navigations use the view-transition crossfade instead.
- * No blur: animating `filter` paints every frame.
- */
 @utility fade-in {
-  animation: fade-in var(--transition-duration-slow) var(--ease-out) both;
+  animation: fade-in var(--transition-duration-slow) var(--ease-glide) both;
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(3px);
+    filter: blur(2px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
+    filter: blur(0);
   }
 }
 
-/*
- * Page transitions (View Transitions API, enabled in nuxt.config). Navigation
- * happens constantly, so it's a quick crossfade, never a slide.
- * For a shared element that morphs between pages, give it the same
- * `[view-transition-name:post-title]` on both pages; names must be unique per page.
- */
-::view-transition-old(root),
-::view-transition-new(root) {
-  animation-duration: var(--transition-duration-fast);
-  animation-timing-function: var(--ease-out);
-}
-
-::view-transition-group(*) {
-  animation-duration: var(--transition-duration-base);
-  animation-timing-function: var(--ease-in-out);
-}
-
-/*
- * Enter/exit for top-layer UI: <dialog> and [popover] (menus, tooltips, toasts).
- * Pure CSS: `@starting-style` animates the open, `allow-discrete` keeps the
- * element rendered while it animates out. Exit is faster than enter.
- *
- * Tune per component:
- *   --motion-origin  transform origin; point it at the trigger for popovers
- *                    (e.g. `top left`), keep `center` for dialogs
- *   --motion-scale   starting scale, default 0.96 (never 0)
- *   --motion-x/y     starting offset, e.g. --motion-y: 0.5rem for toasts rising in,
- *                    --motion-x: 100% for a drawer sliding in from the right
- */
 @utility motion-pop {
   opacity: 0;
   scale: var(--motion-scale, 0.96);
@@ -72,7 +59,7 @@
   transform-origin: var(--motion-origin, center);
   transition-property: opacity, scale, translate, display, overlay;
   transition-duration: var(--transition-duration-fast);
-  transition-timing-function: var(--ease-out);
+  transition-timing-function: var(--motion-ease, var(--ease-glide));
   transition-behavior: allow-discrete;
 
   &:popover-open,
@@ -93,14 +80,13 @@
   }
 }
 
-/* Dimmed backdrop for modal <dialog>, fading with it. */
 @utility motion-backdrop {
   &::backdrop {
     background-color: var(--color-backdrop);
     opacity: 0;
     transition-property: opacity, display, overlay;
     transition-duration: var(--transition-duration-fast);
-    transition-timing-function: var(--ease-out);
+    transition-timing-function: var(--ease-glide);
     transition-behavior: allow-discrete;
   }
 
@@ -116,21 +102,35 @@
   }
 }
 
-/*
- * Smooth open/close for <details> (accordions, disclosures). Relies on
- * `interpolate-size` from base.css; browsers without it open instantly.
- */
 @utility motion-collapse {
   &::details-content {
     block-size: 0;
     overflow: clip;
     transition-property: block-size, content-visibility;
     transition-duration: var(--transition-duration-base);
-    transition-timing-function: var(--ease-out);
+    transition-timing-function: var(--ease-sweep);
     transition-behavior: allow-discrete;
   }
 
   &[open]::details-content {
     block-size: auto;
+  }
+}
+
+/* Movement goes; fades and color changes stay, since they still help explain what changed. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-property:
+      opacity, color, background-color, border-color, outline-color, text-decoration-color, display,
+      overlay !important;
   }
 }

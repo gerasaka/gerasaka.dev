@@ -1,54 +1,23 @@
-/*
- * Layout. Tailwind's 4px spacing scale and flex/grid utilities handle most of
- * it; this file adds the page-level rhythm on top, as named spacing steps.
- *
- * Fluid steps grow linearly from a 375px to a 1024px viewport, then hold.
- * Being `--spacing-*`, each works with any spacing utility: `px-gutter`,
- * `py-page`, `mt-section`, `gap-section`.
- */
 @theme static {
-  /* Side padding of a page: 32px on phones to 80px on desktop. */
-  --spacing-gutter: clamp(2rem, 0.267rem + 7.396vw, 5rem);
-  /* Top and bottom padding of a page: 48px to 80px. */
-  --spacing-page: clamp(3rem, 1.844rem + 4.931vw, 5rem);
-  /* Between major sections of a page: 48px to 64px. */
-  --spacing-section: clamp(3rem, 2.422rem + 2.465vw, 4rem);
-  /*
-   * Gap between page columns: 16px to 40px. Pages lay out on
-   * `grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-x-column` so edges
-   * line up from page to page.
-   */
-  --spacing-column: clamp(1rem, 0.133rem + 3.698vw, 2.5rem);
-
-  /* Content widths, excluding gutters. Also available as `max-w-main`, `max-w-wide`. */
-  --container-main: 48rem;
-  --container-wide: 64rem;
-}
-
-/*
- * Centered column with side gutters. The width is the content width; gutters
- * are added outside it, so text measure is the same at every viewport.
- * Pair with `page` for the top and bottom padding of a full page.
- */
-@utility container-prose {
-  margin-inline: auto;
-  width: 100%;
-  max-width: calc(65ch + 2 * var(--spacing-gutter));
-  padding-inline: var(--spacing-gutter);
+  /* Fluid between 375px and 1024px viewports. */
+  --spacing-gutter: clamp(2rem, 0.267rem + 7.396vw, 5rem); /* 2rem → 5rem */
+  --spacing-page: clamp(3rem, 1.844rem + 4.931vw, 5rem); /* 3rem → 5rem */
+  --spacing-section: clamp(3rem, 2.422rem + 2.465vw, 4rem); /* 3rem → 4rem */
 }
 
 @utility container-main {
+  --container-size: 46rem;
+
   margin-inline: auto;
   width: 100%;
-  max-width: calc(var(--container-main) + 2 * var(--spacing-gutter));
-  padding-inline: var(--spacing-gutter);
+  max-width: calc(var(--container-size) + 2 * var(--spacing-gutter));
+  padding-inline: max(var(--spacing-gutter), env(safe-area-inset-left))
+    max(var(--spacing-gutter), env(safe-area-inset-right));
 }
 
 @utility container-wide {
-  margin-inline: auto;
-  width: 100%;
-  max-width: calc(var(--container-wide) + 2 * var(--spacing-gutter));
-  padding-inline: var(--spacing-gutter);
+  @apply container-main;
+  --container-size: 64rem;
 }
 
 @utility page {
