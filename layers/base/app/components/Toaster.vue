@@ -48,16 +48,18 @@
     };
   }
 
-  const observer = import.meta.client
-    ? new ResizeObserver((entries) => {
-        const next = { ...heights.value };
-        for (const entry of entries) {
-          const el = entry.target as HTMLElement;
-          next[Number(el.dataset.id)] = el.offsetHeight;
-        }
-        heights.value = next;
-      })
-    : undefined;
+  function createObserver() {
+    return new ResizeObserver((entries) => {
+      const next = { ...heights.value };
+      for (const entry of entries) {
+        const el = entry.target as HTMLElement;
+        next[Number(el.dataset.id)] = el.offsetHeight;
+      }
+      heights.value = next;
+    });
+  }
+
+  const observer = import.meta.client ? createObserver() : undefined;
 
   function measure(el: unknown) {
     if (el instanceof HTMLElement) observer?.observe(el);

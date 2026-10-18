@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { SlotsType, VNode } from 'vue';
-  import { useNuxtApp } from '#app';
   import { cloneVNode, Comment, defineComponent, inject } from 'vue';
 
   export default defineComponent({
