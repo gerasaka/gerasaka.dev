@@ -1,14 +1,11 @@
 @theme static {
-  --color-surface: light-dark(var(--color-white), var(--color-gray-900));
+  --color-surface: light-dark(var(--color-white), var(--color-gray-950));
   --color-surface-subtle: light-dark(
     color-mix(in oklab, var(--color-foreground) 4%, transparent),
     color-mix(in oklab, var(--color-foreground) 10%, transparent)
   );
-  --color-surface-raised: light-dark(var(--color-white), var(--color-gray-800));
-  --color-surface-overlay: light-dark(
-    var(--color-white),
-    color-mix(in oklab, var(--color-gray-800), var(--color-gray-700))
-  );
+  --color-surface-raised: light-dark(var(--color-white), var(--color-gray-900));
+  --color-surface-overlay: light-dark(var(--color-white), var(--color-gray-800));
   --color-surface-hover: light-dark(
     color-mix(in oklab, var(--color-foreground) 6%, transparent),
     color-mix(in oklab, var(--color-foreground) 14%, transparent)
@@ -18,62 +15,57 @@
     color-mix(in oklab, var(--color-black) 60%, transparent)
   );
 
-  --color-foreground: light-dark(var(--color-black), var(--color-gray-50));
-  --color-foreground-hover: light-dark(var(--color-gray-800), var(--color-gray-200));
+  --color-foreground: light-dark(var(--color-gray-950), var(--color-gray-100));
+  --color-foreground-hover: light-dark(var(--color-gray-700), var(--color-white));
   --color-foreground-soft: light-dark(var(--color-gray-800), var(--color-gray-300));
   --color-on-foreground: light-dark(var(--color-white), var(--color-gray-950));
   --color-muted: light-dark(var(--color-gray-600), var(--color-gray-400));
 
-  --color-line: light-dark(var(--color-gray-200), var(--color-gray-800));
-  --color-line-strong: var(--color-gray-500);
+  --color-line: light-dark(var(--color-gray-100), var(--color-gray-900));
+  --color-line-strong: light-dark(var(--color-gray-300), var(--color-gray-700));
 
   --color-accent: var(--color-blue-500);
   --color-accent-strong: light-dark(var(--color-accent), var(--color-blue-300));
   --color-accent-strong-hover: light-dark(var(--color-blue-600), var(--color-blue-200));
-  --color-accent-subtle: light-dark(var(--color-blue-50), var(--color-blue-950));
+  --color-accent-subtle: color-mix(in oklab, var(--color-accent) 12%, transparent);
 
   --color-focus: var(--color-accent);
-  --color-selection: light-dark(var(--color-blue-100), var(--color-blue-800));
+  --color-selection: light-dark(var(--color-blue-100), var(--color-blue-900));
   --color-shadow: light-dark(
     color-mix(in oklab, var(--color-black) 20%, transparent),
     color-mix(in oklab, var(--color-black) 70%, transparent)
   );
 
   --color-danger: light-dark(var(--color-brick-500), var(--color-brick-400));
-  --color-danger-subtle: light-dark(var(--color-brick-50), var(--color-brick-950));
+  --color-danger-subtle: color-mix(in oklab, var(--color-danger) 12%, transparent);
   --color-warning: light-dark(var(--color-ochre-500), var(--color-ochre-400));
-  --color-warning-subtle: light-dark(var(--color-ochre-50), var(--color-ochre-950));
+  --color-warning-subtle: color-mix(in oklab, var(--color-warning) 12%, transparent);
   --color-success: light-dark(var(--color-moss-500), var(--color-moss-400));
-  --color-success-subtle: light-dark(var(--color-moss-50), var(--color-moss-950));
+  --color-success-subtle: color-mix(in oklab, var(--color-success) 12%, transparent);
   --color-info: light-dark(var(--color-violet-500), var(--color-violet-400));
-  --color-info-subtle: light-dark(var(--color-violet-50), var(--color-violet-950));
+  --color-info-subtle: color-mix(in oklab, var(--color-info) 12%, transparent);
 }
 
 @layer base {
   :root[data-theme='sepia'] {
     --color-surface: var(--color-sand-100);
-    --color-surface-subtle: color-mix(in oklab, var(--color-sand-800) 5%, transparent);
     --color-surface-raised: var(--color-sand-50);
     --color-surface-overlay: var(--color-sand-50);
-    --color-surface-hover: color-mix(in oklab, var(--color-sand-800) 8%, transparent);
-    --color-backdrop: color-mix(in oklab, var(--color-sand-800) 40%, transparent);
+    --color-backdrop: color-mix(in oklab, var(--color-sand-900) 40%, transparent);
 
     --color-foreground: var(--color-sand-800);
-    --color-foreground-hover: var(--color-sand-900);
+    --color-foreground-hover: var(--color-sand-950);
     --color-foreground-soft: var(--color-sand-700);
     --color-on-foreground: var(--color-sand-100);
-    --color-muted: var(--color-sand-500);
+    --color-muted: var(--color-sand-600);
 
     --color-line: var(--color-sand-200);
     --color-line-strong: var(--color-sand-300);
 
-    --color-accent: var(--color-teal-400);
-    --color-accent-strong: var(--color-teal-400);
-    --color-accent-strong-hover: var(--color-teal-500);
-    --color-accent-subtle: var(--color-teal-100);
+    --color-accent: var(--color-teal-500);
+    --color-accent-strong-hover: var(--color-teal-600);
 
-    --color-focus: var(--color-accent-strong);
     --color-selection: var(--color-teal-200);
-    --color-shadow: color-mix(in oklab, var(--color-sand-800) 25%, transparent);
+    --color-shadow: color-mix(in oklab, var(--color-sand-900) 25%, transparent);
   }
 }

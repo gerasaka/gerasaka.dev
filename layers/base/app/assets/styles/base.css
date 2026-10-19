@@ -53,4 +53,14 @@
     text-align: center;
     white-space: nowrap;
   }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: var(--transition-duration-base);
+    animation-timing-function: var(--ease-sweep);
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
+  }
 }

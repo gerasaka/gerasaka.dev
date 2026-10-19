@@ -1,5 +1,5 @@
 import { createSharedComposable, useColorMode } from '@vueuse/core';
-import { computed } from 'vue';
+import { computed, nextTick } from 'vue';
 
 export const THEMES = ['light', 'dark', 'sepia'] as const;
 export type Theme = (typeof THEMES)[number];
@@ -21,7 +21,17 @@ export function useTheme() {
       return THEMES.includes(value) ? value : 'light';
     },
     set: (value) => {
-      colorMode.store.value = value;
+      const apply = async () => {
+        colorMode.store.value = value;
+        await nextTick();
+      };
+
+      if (!document.startViewTransition) {
+        apply();
+        return;
+      }
+
+      document.startViewTransition(apply);
     },
   });
 }
