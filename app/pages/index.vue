@@ -87,7 +87,7 @@
 <template>
   <main class="min-h-svh">
     <BrushGradient
-      class="fixed top-0 right-0 w-full md:w-200 lg:w-250 translate-x-1/3 -translate-y-1/4"
+      class="fixed top-0 right-[calc(100%-100vw)] w-full md:w-200 lg:w-250 translate-x-1/3 -translate-y-1/4"
     />
 
     <div class="container-main page relative">

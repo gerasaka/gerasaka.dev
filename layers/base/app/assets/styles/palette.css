@@ -28,14 +28,38 @@
   --color-blue-900: #162c47;
   --color-blue-950: #0d1b2b;
 
+  --color-teal-50: #f0f9fa;
+  --color-teal-100: #dceeed;
+  --color-teal-200: #bfe3e7;
+  --color-teal-300: #8ccdd4;
+  --color-teal-400: #51acb8;
+  --color-teal-500: #4798a3;
+  --color-teal-600: #357a85;
+  --color-teal-700: #2b636c;
+  --color-teal-800: #234f56;
+  --color-teal-900: #1a3d42;
+  --color-teal-950: #102a2e;
+
+  --color-sand-50: #faf5e8;
+  --color-sand-100: #f4ecd8;
+  --color-sand-200: #e5dac3;
+  --color-sand-300: #d6c6a5;
+  --color-sand-400: #b9a88a;
+  --color-sand-500: #7a6a55;
+  --color-sand-600: #685840;
+  --color-sand-700: #57452f;
+  --color-sand-800: #3e2f1e;
+  --color-sand-900: #2a1f13;
+  --color-sand-950: #1d150c;
+
   /* ===== Status Hues ===== */
   --color-brick-50: #fff4f2;
   --color-brick-100: #ffe4e1;
   --color-brick-200: #fdc9c2;
   --color-brick-300: #f4a79d;
   --color-brick-400: #e38378;
-  --color-brick-500: #a8443c;
-  --color-brick-600: #92352e;
+  --color-brick-500: #c73e33;
+  --color-brick-600: #a83628;
   --color-brick-700: #762621;
   --color-brick-800: #591a16;
   --color-brick-900: #3e0f0d;

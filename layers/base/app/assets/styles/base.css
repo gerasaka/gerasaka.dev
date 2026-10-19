@@ -12,9 +12,15 @@
     color-scheme: dark;
   }
 
+  :root[data-theme='sepia'] {
+    color-scheme: light;
+  }
+
   body {
     background-color: var(--color-surface);
     color: var(--color-foreground);
+    padding-left: calc(100vw - 100%);
+
     /* Subpixel rendering on macOS makes light text on dark look bold and blurry. */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
