@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-  useHead({
-    link: [{ rel: 'icon', href: '/favicon.ico' }],
-  });
+  useThemeFavicon();
 </script>
 
 <template>
