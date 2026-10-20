@@ -60,8 +60,8 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(491.649 83.5572) scale(491.649 83.5572)"
       >
-        <stop stop-color="#4285D5" />
-        <stop offset="1" stop-color="#709FD7" stop-opacity="0" />
+        <stop class="brush-color" />
+        <stop offset="1" class="brush-color" stop-opacity="0" />
       </radialGradient>
       <radialGradient
         id="brush-paint1"
@@ -71,8 +71,8 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(483.495 139.173) scale(483.495 139.173)"
       >
-        <stop stop-color="#4285D5" />
-        <stop offset="1" stop-color="#709FD7" stop-opacity="0" />
+        <stop class="brush-color" />
+        <stop offset="1" class="brush-color" stop-opacity="0" />
       </radialGradient>
       <radialGradient
         id="brush-paint2"
@@ -82,8 +82,8 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(532.738 107.968) scale(532.738 107.968)"
       >
-        <stop stop-color="#4285D5" />
-        <stop offset="1" stop-color="#709FD7" stop-opacity="0" />
+        <stop class="brush-color" />
+        <stop offset="1" class="brush-color" stop-opacity="0" />
       </radialGradient>
       <radialGradient
         id="brush-paint3"
@@ -93,8 +93,8 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="translate(412.289 83.5572) scale(412.289 83.5572)"
       >
-        <stop stop-color="#4285D5" />
-        <stop offset="1" stop-color="#709FD7" stop-opacity="0" />
+        <stop class="brush-color" />
+        <stop offset="1" class="brush-color" stop-opacity="0" />
       </radialGradient>
     </defs>
   </svg>
@@ -102,6 +102,10 @@
 
 <style scoped>
   @reference "#base/app/assets/styles/index.css";
+
+  .brush-color {
+    stop-color: var(--color-accent);
+  }
 
   .brush-stroke {
     opacity: 0;

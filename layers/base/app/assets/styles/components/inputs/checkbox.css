@@ -1,10 +1,10 @@
 @utility checkbox {
   @apply grid size-4 shrink-0 cursor-pointer appearance-none place-content-center rounded-sm
-    border border-line-strong bg-surface transition-colors duration-fast ease-glide
+    border border-line-strong bg-surface transition-colors duration-fast ease-snap
     aria-invalid:border-danger disabled:cursor-not-allowed disabled:opacity-40;
 
   &::before {
-    @apply size-2.5 scale-50 bg-on-foreground opacity-0 duration-fast ease-glide;
+    @apply size-2.5 scale-50 bg-on-foreground opacity-0 duration-fast ease-snap;
 
     content: '';
     transition-property: opacity, scale;

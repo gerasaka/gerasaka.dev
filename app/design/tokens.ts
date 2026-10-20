@@ -189,7 +189,7 @@ export const DURATIONS = [
 ];
 
 export const EASINGS = [
-  { token: 'glide', usage: 'Appearing, leaving, changing. The default' },
-  { token: 'sweep', usage: 'Movement across the screen: collapse, progress' },
-  { token: 'settle', usage: 'Panels sliding in from an edge: the drawer' },
+  { token: 'snap', usage: 'Anything the user triggers: controls, overlays, collapse. The default' },
+  { token: 'glide', usage: 'Content arriving on its own: page entrance, card lift' },
+  { token: 'sweep', usage: 'Continuous or full-screen motion: progress, theme change' },
 ];

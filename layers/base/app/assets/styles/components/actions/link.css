@@ -1,4 +1,4 @@
 @utility link {
   @apply rounded-sm text-accent-strong underline underline-offset-2 transition-colors duration-fast
-    ease-glide hover:text-accent-strong-hover;
+    ease-snap hover:text-accent-strong-hover;
 }

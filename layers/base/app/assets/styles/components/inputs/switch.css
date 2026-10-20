@@ -1,10 +1,10 @@
 @utility switch {
   @apply inline-flex h-5 w-8 shrink-0 cursor-pointer appearance-none items-center rounded-full
-    bg-line-strong p-0.5 transition-colors duration-fast ease-glide
+    bg-line-strong p-0.5 transition-colors duration-fast ease-snap
     disabled:cursor-not-allowed disabled:opacity-40;
 
   &::before {
-    @apply size-4 rounded-full bg-surface duration-base ease-glide;
+    @apply size-4 rounded-full bg-surface duration-fast ease-snap;
 
     transition-property: translate;
     content: '';

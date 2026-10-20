@@ -8,7 +8,7 @@
   }
 
   &::-webkit-progress-value {
-    @apply rounded-full bg-current duration-base ease-glide;
+    @apply rounded-full bg-current duration-base ease-snap;
     transition-property: width;
   }
 
@@ -18,7 +18,7 @@
 
   /* Browsers don't render pseudo-elements on <progress>, so the sweep is a moving background. */
   &:indeterminate {
-    @apply animate-progress;
+    animation: progress 1.2s var(--ease-sweep) infinite;
 
     background-image: linear-gradient(currentColor, currentColor);
     background-repeat: no-repeat;
@@ -66,5 +66,14 @@
   @media (prefers-reduced-motion: reduce) {
     animation-duration: 1.5s !important;
     animation-iteration-count: infinite !important;
+  }
+}
+
+@keyframes progress {
+  from {
+    background-position-x: -66.67%;
+  }
+  to {
+    background-position-x: 166.67%;
   }
 }

@@ -3,7 +3,7 @@
 
   &::after {
     @apply pointer-events-none absolute left-1/2 rounded-sm bg-foreground text-xs font-medium
-      whitespace-nowrap text-on-foreground opacity-0 duration-fast ease-glide;
+      whitespace-nowrap text-on-foreground opacity-0 duration-fast ease-snap;
 
     transition-property: opacity, translate;
     content: attr(data-tooltip);

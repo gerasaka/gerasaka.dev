@@ -11,8 +11,8 @@
     color-mix(in oklab, var(--color-foreground) 14%, transparent)
   );
   --color-backdrop: light-dark(
-    color-mix(in oklab, var(--color-black) 40%, transparent),
-    color-mix(in oklab, var(--color-black) 60%, transparent)
+    color-mix(in oklab, var(--color-black) 25%, transparent),
+    color-mix(in oklab, var(--color-black) 50%, transparent)
   );
 
   --color-foreground: light-dark(var(--color-gray-950), var(--color-gray-100));
@@ -51,7 +51,7 @@
     --color-surface: var(--color-sand-100);
     --color-surface-raised: var(--color-sand-50);
     --color-surface-overlay: var(--color-sand-50);
-    --color-backdrop: color-mix(in oklab, var(--color-sand-900) 40%, transparent);
+    --color-backdrop: color-mix(in oklab, var(--color-sand-900) 25%, transparent);
 
     --color-foreground: var(--color-sand-800);
     --color-foreground-hover: var(--color-sand-950);

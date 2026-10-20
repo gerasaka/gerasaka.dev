@@ -28,7 +28,7 @@
   }
 
   &::-webkit-slider-thumb {
-    @apply size-4 appearance-none rounded-full border-0 bg-surface duration-fast ease-glide;
+    @apply size-4 appearance-none rounded-full border-0 bg-surface duration-fast ease-snap;
 
     transition-property: scale;
     margin-top: calc((--spacing(1) - --spacing(4)) / 2);
@@ -38,7 +38,7 @@
   }
 
   &::-moz-range-thumb {
-    @apply size-4 rounded-full border-0 bg-surface duration-fast ease-glide;
+    @apply size-4 rounded-full border-0 bg-surface duration-fast ease-snap;
 
     transition-property: scale;
     box-shadow:

@@ -633,8 +633,8 @@
               </DesignExample>
 
               <DesignExample
-                name="motion-pop · motion-backdrop · motion-collapse · fade-in"
-                note="Behaviors built on the tokens, all CSS. Pop and backdrop drive dialogs and popovers: scale from 0.96, fade, exit faster than enter. Collapse animates details open and shut. Fade-in staggers page content once on first load."
+                name="motion-pop · fade-in"
+                note="Behaviors built on the tokens, all CSS. Pop drives dialogs and popovers: scale from 0.96, fade, exit faster than enter. Fade-in staggers page content once on first load."
               >
                 <div class="flex flex-wrap gap-2">
                   <a href="#overlays" class="chip">See overlays</a>
@@ -1231,7 +1231,7 @@
               id="disclosure"
               :number="numberOf('disclosure')"
               title="Disclosure"
-              description="Content that opens in place, on native details. Works without script; opening and closing animate with motion-collapse."
+              description="Content that opens in place, on native details. Works without script; opening and closing animate smoothly."
             >
               <DesignExample
                 name="disclosure"
@@ -1264,7 +1264,7 @@
                   </details>
                   <details class="disclosure" name="demo-faq">
                     <summary>Does it animate?</summary>
-                    <p>Yes, using motion-collapse. Older browsers open it instantly.</p>
+                    <p>Yes, in modern browsers. Older browsers open it instantly.</p>
                   </details>
                 </div>
               </DesignExample>
