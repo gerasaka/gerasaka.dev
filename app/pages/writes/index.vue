@@ -3,11 +3,10 @@
     queryCollection('writes').order('date', 'DESC').all(),
   );
 
-  useSeoMeta({
-    title: 'Writes · Gerry Julio',
-    // TODO: Update description
-    description: '',
-  });
+  const title = 'Writes';
+  const description = 'Thoughts on software, design, and whatever else sparks my curiosity.';
+
+  usePageSeo({ title, description });
 </script>
 
 <template>
@@ -15,21 +14,17 @@
     <div class="container-main page">
       <FadeIn>
         <FadeItem>
-          <NuxtLink
-            to="/"
-            class="btn btn-quiet"
-          >
-            <span aria-hidden="true">&larr;</span>
+          <NuxtLink to="/" class="btn btn-quiet">
+            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
             Back
           </NuxtLink>
         </FadeItem>
 
         <FadeItem>
-          <h1 class="text-title mt-12">Writes</h1>
+          <h1 class="text-title mt-12">{{ title }}</h1>
         </FadeItem>
         <FadeItem>
-          <!-- TODO: Update description -->
-          <p class="text-subtitle mt-2"></p>
+          <p class="text-subtitle mt-2">{{ description }}</p>
         </FadeItem>
 
         <ul class="mt-12 flex flex-col gap-10">

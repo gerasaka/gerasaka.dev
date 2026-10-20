@@ -11,26 +11,28 @@
     throw createError({ status: 404, statusText: 'Post not found', fatal: true });
   }
 
-  useSeoMeta({
-    title: () => `${post.value?.title} · Gerry Julio`,
-    description: () => post.value?.description,
-  });
+  usePageSeo(
+    computed(() => ({
+      title: post.value?.title ?? '',
+      description: post.value?.description ?? '',
+    })),
+  );
 </script>
 
 <template>
   <main class="min-h-svh">
     <article class="container-main page">
       <NuxtLink to="/writes" class="btn btn-quiet">
-        <span aria-hidden="true">&larr;</span>
+        <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
         All posts
       </NuxtLink>
 
       <template v-if="post">
-        <p class="text-caption mt-12">
-          {{ formatDate(post.date) }}
-          <span aria-hidden="true"> · </span>
-          {{ formatReadingTime(post.body) }}
-        </p>
+        <span class="text-caption flex items-center mt-12">
+          <p>{{ formatDate(post.date) }}</p>
+          <Icon name="ph:dot-outline-fill" class="mt-0.5 mx-1.5" />
+          <p>{{ formatReadingTime(post.body) }}</p>
+        </span>
         <h1 class="text-title mt-2">
           {{ post.title }}
         </h1>

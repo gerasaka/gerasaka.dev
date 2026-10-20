@@ -9,6 +9,15 @@ export default defineNuxtConfig({
   alias: {
     '#base': resolve('./'),
   },
+  appConfig: {
+    site: {
+      name: 'Gerry Julio',
+      url: 'https://gerasaka.dev',
+      ogImage: 'https://gerasaka.dev/og-image.png',
+      ogImageAlt: 'Personal website of Gerry Julio',
+      twitterHandle: '@gerasaka',
+    },
+  },
   css: [resolve('./app/assets/styles/index.css')],
   vite: {
     plugins: [tailwindcss()],

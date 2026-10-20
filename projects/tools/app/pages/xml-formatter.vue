@@ -4,16 +4,10 @@
   import { EXAMPLE_INPUT } from '~/xml-formatter/example';
   import XmlNodeView from '~/xml-formatter/XmlNodeView.vue';
 
-  const title = 'XML Formatter — Tools';
-  const description = 'Unescape and prettify XML copied from logs. Runs entirely in your browser.';
+  const title = 'XML Formatter';
+  const description = 'Unescape and prettify XML logs. Runs entirely in browser.';
 
-  useSeoMeta({
-    title,
-    description,
-    ogTitle: title,
-    ogDescription: description,
-    ogUrl: 'https://tools.gerasaka.dev/xml-formatter',
-  });
+  usePageSeo({ title, description });
 
   const input = ref('');
   const result = ref<FormatResult | null>(null);
@@ -48,7 +42,7 @@
       <FadeIn>
         <FadeItem>
           <NuxtLink to="/" class="btn btn-quiet">
-            <span aria-hidden="true">&larr;</span>
+            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
             Tools
           </NuxtLink>
         </FadeItem>
