@@ -1,13 +1,6 @@
 <script lang="ts" setup>
   const { copy, copied } = useClipboard({ copiedDuring: 2000 });
 
-  const title = 'Gerry Julio — Software Engineer';
-  const description =
-    'Software Engineer turning ideas into immersive web experiences. Blending thoughtful design with solid engineering.';
-  const ogImage = 'https://gerasaka.dev/og-image.png';
-  const ogImageAlt = 'Personal website of Gerry Julio';
-  const email = 'gerryjulioo@gmail.com';
-
   const socials = [
     {
       label: 'linkedin',
@@ -39,32 +32,13 @@
     { label: 'Tools', url: 'https://tools.gerasaka.dev' },
   ];
 
-  useSeoMeta({
-    robots: 'index, follow',
-    title,
-    description,
+  const title = 'Gerry Julio - Software Engineer';
+  const description =
+    'Software Engineer turning ideas into immersive web experiences. Blending thoughtful design with solid engineering.';
+  const email = 'gerryjulioo@gmail.com';
 
-    // Open Graph
-    ogUrl: 'https://gerasaka.dev/',
-    ogType: 'website',
-    ogSiteName: 'Gerry Julio',
-    ogLocale: 'en_US',
-    ogTitle: title,
-    ogDescription: description,
-    ogImage,
-    ogImageWidth: 1200,
-    ogImageHeight: 630,
-    ogImageAlt,
-
-    // Twitter
-    twitterCard: 'summary_large_image',
-    twitterSite: '@gerasaka',
-    twitterCreator: '@gerasaka',
-    twitterTitle: title,
-    twitterDescription: description,
-    twitterImage: ogImage,
-    twitterImageAlt: ogImageAlt,
-  });
+  usePageSeo({ title, description });
+  useSeoMeta({ robots: 'index, follow' });
 
   useHead({
     script: [
@@ -139,7 +113,8 @@
                 :to="section.url"
                 class="btn btn-quiet"
               >
-                {{ section.label }} <span aria-hidden="true">&rarr;</span>
+                {{ section.label }}
+                <Icon name="solar:arrow-right-line-duotone" class="mt-0.5 size-3.5" />
               </NuxtLink>
             </div>
           </FadeItem>

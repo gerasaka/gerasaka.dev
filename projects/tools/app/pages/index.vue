@@ -6,25 +6,16 @@
       name: 'XML Formatter',
       description: 'Unescape and prettify XML copied from logs. Runs entirely in your browser.',
       link: { type: 'internal', to: '/xml-formatter' },
-      kind: 'web',
-      stack: ['vue'],
-      status: 'live',
+      kind: 'Web',
+      stack: ['Vue'],
     },
   ];
 
-  const title = 'Tools — Gerry Julio';
-  const description = 'Small tools I built and use every day.';
+  const title = 'Tools';
+  const description = 'Tools I built to make my everyday tasks easier.';
 
-  useSeoMeta({
-    robots: 'index, follow',
-    title,
-    description,
-    ogUrl: 'https://tools.gerasaka.dev/',
-    ogType: 'website',
-    ogSiteName: 'Gerry Julio',
-    ogTitle: title,
-    ogDescription: description,
-  });
+  usePageSeo({ title, description });
+  useSeoMeta({ robots: 'index, follow' });
 </script>
 
 <template>
@@ -32,17 +23,14 @@
     <div class="container-main page">
       <FadeIn>
         <FadeItem>
-          <a
-            href="https://gerasaka.dev"
-            class="btn btn-quiet"
-          >
-            <span aria-hidden="true">&larr;</span>
-            gerasaka.dev
+          <a href="https://gerasaka.dev" class="btn btn-quiet">
+            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
+            Back
           </a>
         </FadeItem>
 
         <FadeItem>
-          <h1 class="text-title mt-12">Tools</h1>
+          <h1 class="text-title mt-12">{{ title }}</h1>
         </FadeItem>
         <FadeItem>
           <p class="text-subtitle mt-2">{{ description }}</p>

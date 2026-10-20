@@ -15,7 +15,7 @@
   );
 
   useSeoMeta({
-    title: () => `${error.status} · Gerry Julio`,
+    title: () => `${error.status}`,
     robots: 'noindex',
   });
 
