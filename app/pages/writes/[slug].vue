@@ -8,7 +8,7 @@
   );
 
   if (!post.value) {
-    throw createError({ statusCode: 404, statusMessage: 'Post not found', fatal: true });
+    throw createError({ status: 404, statusText: 'Post not found', fatal: true });
   }
 
   useSeoMeta({
