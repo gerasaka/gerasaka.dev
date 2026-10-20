@@ -1,14 +1,34 @@
 @utility dialog {
-  @apply motion-pop motion-backdrop m-auto overflow-y-auto elevation-overlay rounded-md p-6 text-foreground;
+  @apply motion-pop m-auto overflow-y-auto elevation-overlay rounded-md p-6 text-foreground;
 
   width: min(100% - 2rem, 28rem);
   max-height: calc(100dvh - 2rem);
+
+  &::backdrop {
+    background-color: var(--color-backdrop);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition-property: opacity, display, overlay;
+    transition-duration: var(--transition-duration-fast);
+    transition-timing-function: var(--ease-snap);
+    transition-behavior: allow-discrete;
+  }
+
+  &[open]::backdrop {
+    opacity: 1;
+    transition-duration: var(--transition-duration-base);
+  }
+
+  @starting-style {
+    &[open]::backdrop {
+      opacity: 0;
+    }
+  }
 }
 
 @utility dialog-drawer {
   --motion-x: 100%;
   --motion-scale: 1;
-  --motion-ease: var(--ease-settle);
   @apply dialog;
 
   margin: 0 0 0 auto;

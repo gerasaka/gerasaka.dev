@@ -22,7 +22,7 @@
   }
 
   & tbody tr {
-    @apply transition-colors duration-fast ease-glide;
+    @apply transition-colors duration-fast ease-snap;
   }
 
   & tbody tr:hover {

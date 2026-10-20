@@ -14,7 +14,7 @@
   --btn-border: transparent;
 
   @apply relative isolate inline-flex w-fit shrink-0 cursor-pointer items-center justify-center gap-2 rounded-md
-    border border-transparent text-sm font-medium whitespace-nowrap select-none duration-fast ease-glide;
+    border border-transparent text-sm font-medium whitespace-nowrap select-none duration-fast ease-snap;
 
   height: var(--btn-h);
   padding-inline: var(--btn-px);
@@ -23,7 +23,7 @@
 
   /* Fill and border live on a layer behind the label, so pressing shrinks the box but not the text. */
   &::before {
-    @apply absolute -inset-px -z-10 border duration-fast ease-glide;
+    @apply absolute -inset-px -z-10 border duration-fast ease-snap;
 
     content: '';
     border-color: var(--btn-border);

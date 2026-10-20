@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-  import { useColorMode } from '@vueuse/core';
   import { onBeforeUnmount, onMounted, ref } from 'vue';
   import DesignExample from '~/design/DesignExample.vue';
   import DesignSection from '~/design/DesignSection.vue';
@@ -105,9 +104,6 @@
     return { ratio: ratio.toFixed(1), pass: ratio >= color.contrast.min };
   }
 
-  const THEME_MODES = ['auto', 'light', 'dark'] as const;
-  const { store: themeMode } = useColorMode({ attribute: 'data-theme', storageKey: null });
-
   function familyOf(token: string) {
     return vars.value[`--font-${token}`]?.split(',')[0]?.replace(/['"]/g, '').trim();
   }
@@ -205,24 +201,6 @@
               title="Color"
               description="Ink is the primary; blue is the single accent. Components only use semantic tokens, which point into the raw palette and resolve per theme. Each swatch shows light on the left, dark on the right."
             >
-              <div
-                class="flex flex-wrap items-center gap-2"
-                role="group"
-                aria-label="Theme preview"
-              >
-                <span class="text-caption mr-2">Preview</span>
-                <button
-                  v-for="mode in THEME_MODES"
-                  :key="mode"
-                  type="button"
-                  class="chip capitalize"
-                  :aria-pressed="themeMode === mode"
-                  @click="themeMode = mode"
-                >
-                  {{ mode === 'auto' ? 'System' : mode }}
-                </button>
-              </div>
-
               <div v-for="group in SEMANTIC_COLOR_GROUPS" :key="group.name">
                 <h3 class="text-overline border-b border-line pb-3">{{ group.name }}</h3>
                 <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-8 lg:grid-cols-3">
@@ -655,8 +633,8 @@
               </DesignExample>
 
               <DesignExample
-                name="motion-pop · motion-backdrop · motion-collapse · fade-in"
-                note="Behaviors built on the tokens, all CSS. Pop and backdrop drive dialogs and popovers: scale from 0.96, fade, exit faster than enter. Collapse animates details open and shut. Fade-in staggers page content once on first load."
+                name="motion-pop · fade-in"
+                note="Behaviors built on the tokens, all CSS. Pop drives dialogs and popovers: scale from 0.96, fade, exit faster than enter. Fade-in staggers page content once on first load."
               >
                 <div class="flex flex-wrap gap-2">
                   <a href="#overlays" class="chip">See overlays</a>
@@ -1253,7 +1231,7 @@
               id="disclosure"
               :number="numberOf('disclosure')"
               title="Disclosure"
-              description="Content that opens in place, on native details. Works without script; opening and closing animate with motion-collapse."
+              description="Content that opens in place, on native details. Works without script; opening and closing animate smoothly."
             >
               <DesignExample
                 name="disclosure"
@@ -1286,7 +1264,7 @@
                   </details>
                   <details class="disclosure" name="demo-faq">
                     <summary>Does it animate?</summary>
-                    <p>Yes, using motion-collapse. Older browsers open it instantly.</p>
+                    <p>Yes, in modern browsers. Older browsers open it instantly.</p>
                   </details>
                 </div>
               </DesignExample>

@@ -7,6 +7,7 @@
 <template>
   <div>
     <NuxtPage />
+    <ThemeToggle />
     <Toaster />
   </div>
 </template>

@@ -18,6 +18,12 @@ export default defineNuxtConfig({
       htmlAttrs: {
         lang: 'en',
       },
+      script: [
+        {
+          // Runs before first paint to prevent FOUC
+          innerHTML: `try{var t=localStorage.getItem('theme');if(['light','dark','sepia'].includes(t))document.documentElement.dataset.theme=t}catch(e){}`,
+        },
+      ],
     },
   },
   fonts: {

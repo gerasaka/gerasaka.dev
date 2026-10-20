@@ -6,7 +6,7 @@
 
 @utility tab {
   @apply -mb-px flex shrink-0 cursor-pointer items-center gap-2 border-b-2 border-transparent py-3 text-sm
-    whitespace-nowrap text-muted transition-colors duration-fast ease-glide hover:text-foreground
+    whitespace-nowrap text-muted transition-colors duration-fast ease-snap hover:text-foreground
     disabled:cursor-not-allowed disabled:opacity-40;
 
   &[aria-selected='true'],

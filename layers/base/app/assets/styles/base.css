@@ -12,9 +12,15 @@
     color-scheme: dark;
   }
 
+  :root[data-theme='sepia'] {
+    color-scheme: light;
+  }
+
   body {
     background-color: var(--color-surface);
     color: var(--color-foreground);
+    padding-left: calc(100vw - 100%);
+
     /* Subpixel rendering on macOS makes light text on dark look bold and blurry. */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -46,5 +52,15 @@
     font-size: 0.8125em;
     text-align: center;
     white-space: nowrap;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: var(--transition-duration-base);
+    animation-timing-function: var(--ease-sweep);
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
   }
 }

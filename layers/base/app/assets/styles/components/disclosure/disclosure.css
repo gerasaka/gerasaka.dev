@@ -1,5 +1,16 @@
 @utility disclosure {
-  @apply motion-collapse;
+  &::details-content {
+    block-size: 0;
+    overflow: clip;
+    transition-property: block-size, content-visibility;
+    transition-duration: var(--transition-duration-base);
+    transition-timing-function: var(--ease-snap);
+    transition-behavior: allow-discrete;
+  }
+
+  &[open]::details-content {
+    block-size: auto;
+  }
 
   & > summary {
     @apply inline-flex cursor-pointer list-none items-center gap-2 rounded-sm text-label select-none;
@@ -10,7 +21,7 @@
   }
 
   & > summary::after {
-    @apply size-2 shrink-0 -translate-y-0.5 rotate-45 border-muted duration-base ease-glide;
+    @apply size-2 shrink-0 -translate-y-0.5 rotate-45 border-muted duration-base ease-snap;
 
     content: '';
     border-right-width: 1.5px;

@@ -3,15 +3,10 @@
   --transition-duration-base: 250ms;
   --transition-duration-slow: 500ms;
 
-  /*
-   * No ease-in curve: it delays the first frames, the moment users watch most.
-   * Glide for things appearing, leaving, or changing; sweep for movement across the screen;
-   * settle for panels sliding in from an edge. `linear` stays for constant motion.
-   */
   --ease-*: initial;
+  --ease-snap: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-glide: cubic-bezier(0.5, 1, 0.85, 1);
   --ease-sweep: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-settle: cubic-bezier(0.32, 0.72, 0, 1);
 
   /* Constant speed reads as progress; a curve would read as stutter. */
   --animate-spinner: spinner 0.6s linear infinite;
@@ -19,18 +14,6 @@
   @keyframes spinner {
     to {
       rotate: 1turn;
-    }
-  }
-
-  --animate-progress: progress 1.2s var(--ease-sweep) infinite;
-
-  /* For a segment 40% of the track wide: these positions start and end fully off the track. */
-  @keyframes progress {
-    from {
-      background-position-x: -66.67%;
-    }
-    to {
-      background-position-x: 166.67%;
     }
   }
 }
@@ -59,7 +42,7 @@
   transform-origin: var(--motion-origin, center);
   transition-property: opacity, scale, translate, display, overlay;
   transition-duration: var(--transition-duration-fast);
-  transition-timing-function: var(--motion-ease, var(--ease-glide));
+  transition-timing-function: var(--ease-snap);
   transition-behavior: allow-discrete;
 
   &:popover-open,
@@ -80,44 +63,6 @@
   }
 }
 
-@utility motion-backdrop {
-  &::backdrop {
-    background-color: var(--color-backdrop);
-    opacity: 0;
-    transition-property: opacity, display, overlay;
-    transition-duration: var(--transition-duration-fast);
-    transition-timing-function: var(--ease-glide);
-    transition-behavior: allow-discrete;
-  }
-
-  &[open]::backdrop {
-    opacity: 1;
-    transition-duration: var(--transition-duration-base);
-  }
-
-  @starting-style {
-    &[open]::backdrop {
-      opacity: 0;
-    }
-  }
-}
-
-@utility motion-collapse {
-  &::details-content {
-    block-size: 0;
-    overflow: clip;
-    transition-property: block-size, content-visibility;
-    transition-duration: var(--transition-duration-base);
-    transition-timing-function: var(--ease-sweep);
-    transition-behavior: allow-discrete;
-  }
-
-  &[open]::details-content {
-    block-size: auto;
-  }
-}
-
-/* Movement goes; fades and color changes stay, since they still help explain what changed. */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto !important;

@@ -109,7 +109,7 @@
     font-size: 0.8em;
     font-weight: 400;
     opacity: 0;
-    transition: opacity var(--transition-duration-fast) var(--ease-glide);
+    transition: opacity var(--transition-duration-fast) var(--ease-snap);
   }
 
   :where(h2, h3, h4) > a:hover::after,
