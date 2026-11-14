@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   },
   devtools: { enabled: true },
   nitro: {
+    preset: 'static',
     prerender: {
       crawlLinks: true,
       routes: ['/'],
