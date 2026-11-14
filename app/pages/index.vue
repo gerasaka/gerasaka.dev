@@ -72,10 +72,12 @@
 
         <div>
           <FadeItem>
-            <h1
-              class="text-title font-semibold mt-16 inline-block text-transparent bg-clip-text bg-linear-to-r from-foreground from-60% via-accent-strong via-90% to-accent"
-            >
-              Gerry Julio
+            <h1 class="text-title font-semibold mt-16 inline-block">
+              <span
+                class="gradient-text text-transparent bg-clip-text bg-linear-to-r from-foreground from-60% via-accent-strong via-90% to-accent selection:bg-none selection:bg-selection selection:text-foreground"
+              >
+                Gerry Julio
+              </span>
             </h1>
           </FadeItem>
           <FadeItem>
@@ -163,16 +165,21 @@
   @reference "#base/app/assets/styles/index.css";
 
   h1 {
-    padding-bottom: 0.15em;
     word-spacing: 0.15em;
+  }
+
+  .gradient-text {
+    display: inline-block;
+    padding-bottom: 0.15em;
     background-size: 200% auto;
   }
 
   h1.fade-in {
-    animation-name: fade-in, gradient-slide;
-    animation-duration: var(--transition-duration-slow), 5s;
-    animation-timing-function: var(--ease-glide), var(--ease-sweep);
-    animation-fill-mode: both;
+    animation: fade-in var(--transition-duration-slow) var(--ease-glide) both;
+  }
+
+  h1.fade-in .gradient-text {
+    animation: gradient-slide 5s var(--ease-sweep) both;
   }
 
   @keyframes gradient-slide {
