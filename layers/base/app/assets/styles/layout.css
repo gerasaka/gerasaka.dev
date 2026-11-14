@@ -3,6 +3,7 @@
   --spacing-gutter: clamp(2rem, 0.267rem + 7.396vw, 5rem); /* 2rem → 5rem */
   --spacing-page: clamp(3rem, 1.844rem + 4.931vw, 5rem); /* 3rem → 5rem */
   --spacing-section: clamp(3rem, 2.422rem + 2.465vw, 4rem); /* 3rem → 4rem */
+  --spacing-sidebar: clamp(14rem, 4.154rem + 15.385vw, 18rem); /* 14rem → 18rem */
 }
 
 @utility container-main {

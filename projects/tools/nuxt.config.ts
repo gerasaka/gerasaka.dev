@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   extends: ['../../layers/base'],
   appConfig: {
     site: {
+      key: 'tools',
       url: 'https://tools.gerasaka.dev',
     },
   },

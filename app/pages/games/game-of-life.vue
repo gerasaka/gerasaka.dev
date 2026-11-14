@@ -2,6 +2,8 @@
   import LifeGame from '~/games/game-of-life/LifeGame.vue';
   import RuleDiagram from '~/games/game-of-life/RuleDiagram.vue';
 
+  definePageMeta({ layout: 'section', section: 'games' });
+
   const rules = [
     {
       text: 'A live cell with fewer than two live neighbors dies, as if by underpopulation.',
@@ -30,16 +32,6 @@
   <main class="min-h-svh">
     <div class="container-main page">
       <FadeIn>
-        <FadeItem>
-          <NuxtLink
-            to="/games"
-            class="btn btn-quiet"
-          >
-            <span aria-hidden="true">&larr;</span>
-            All games
-          </NuxtLink>
-        </FadeItem>
-
         <FadeItem>
           <h1 class="text-title font-pixel mt-12">Game of Life</h1>
         </FadeItem>
