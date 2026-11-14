@@ -35,11 +35,11 @@
   <component
     :is="wrapper.is"
     v-bind="wrapper.props"
-    class="card card-link flex flex-col gap-2 relative overflow-hidden"
+    class="card card-link flex flex-col gap-2 relative"
   >
     <span
       v-if="tool.wip"
-      class="absolute top-0 right-0 px-4 py-1 bg-ochre-500 text-white rounded-bl-sm"
+      class="absolute top-0 right-0 px-4 py-1 bg-ochre-500 text-white rounded-tr-md rounded-bl-sm"
     >
       WIP
     </span>
