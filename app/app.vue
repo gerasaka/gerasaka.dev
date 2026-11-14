@@ -4,7 +4,9 @@
 
 <template>
   <div>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
     <ThemeToggle />
     <Toaster />
   </div>

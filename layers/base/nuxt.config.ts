@@ -11,6 +11,7 @@ export default defineNuxtConfig({
   },
   appConfig: {
     site: {
+      key: 'main',
       name: 'Gerry Julio',
       url: 'https://gerasaka.dev',
       ogImage: 'https://gerasaka.dev/og-image.png',

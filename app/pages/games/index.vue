@@ -2,6 +2,8 @@
   import { GAMES } from '~/games/games';
   import GameCard from '~/games/GameCard.vue';
 
+  definePageMeta({ layout: 'section', section: 'games' });
+
   const title = 'Games';
   const description = 'Collection of games I make for fun.';
 
@@ -13,14 +15,7 @@
     <div class="container-main page">
       <FadeIn>
         <FadeItem>
-          <NuxtLink to="/" class="btn btn-quiet">
-            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
-            Back
-          </NuxtLink>
-        </FadeItem>
-
-        <FadeItem>
-          <h1 class="text-title mt-12">{{ title }}</h1>
+          <h1 class="text-title">{{ title }}</h1>
         </FadeItem>
         <FadeItem>
           <p class="text-subtitle mt-2">{{ description }}</p>

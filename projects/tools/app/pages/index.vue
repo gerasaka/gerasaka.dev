@@ -1,6 +1,8 @@
 <script lang="ts" setup>
   import type { Tool } from '~/components/ToolCard.vue';
 
+  definePageMeta({ layout: 'section', section: 'tools' });
+
   const tools: Tool[] = [
     {
       name: 'XML Formatter',
@@ -23,14 +25,7 @@
     <div class="container-main page">
       <FadeIn>
         <FadeItem>
-          <a href="https://gerasaka.dev" class="btn btn-quiet">
-            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
-            Back
-          </a>
-        </FadeItem>
-
-        <FadeItem>
-          <h1 class="text-title mt-12">{{ title }}</h1>
+          <h1 class="text-title">{{ title }}</h1>
         </FadeItem>
         <FadeItem>
           <p class="text-subtitle mt-2">{{ description }}</p>

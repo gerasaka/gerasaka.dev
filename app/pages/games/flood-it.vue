@@ -1,21 +1,13 @@
 <script lang="ts" setup>
   import FloodGame from '~/games/flood-it/FloodGame.vue';
+
+  definePageMeta({ layout: 'section', section: 'games' });
 </script>
 
 <template>
   <main class="min-h-svh">
     <div class="container-main page">
       <FadeIn>
-        <FadeItem>
-          <NuxtLink
-            to="/games"
-            class="btn btn-quiet"
-          >
-            <span aria-hidden="true">&larr;</span>
-            All games
-          </NuxtLink>
-        </FadeItem>
-
         <FadeItem>
           <h1 class="text-title font-pixel mt-12">Flood-It</h1>
         </FadeItem>
@@ -28,15 +20,15 @@
           <section>
             <h2 class="font-pixel text-2xl">How to play</h2>
             <p class="text-body mt-2">
-              Your flood starts at the top-left corner. Pick a color and the flood turns that
-              color, swallowing every touching square that already matches. Fill the whole board
-              with one color in 25 moves or fewer.
+              Your flood starts at the top-left corner. Pick a color and the flood turns that color,
+              swallowing every touching square that already matches. Fill the whole board with one
+              color in 25 moves or fewer.
             </p>
 
             <h2 class="font-pixel text-2xl mt-10">Harder than it looks</h2>
             <p class="text-body mt-2">
-              Finding the fewest possible moves for a Flood-It board is NP-hard, the same family
-              of problems as the traveling salesman. Nobody knows a fast way to find the perfect
+              Finding the fewest possible moves for a Flood-It board is NP-hard, the same family of
+              problems as the traveling salesman. Nobody knows a fast way to find the perfect
               solution, so every good move you make is a guess backed by intuition.
             </p>
           </section>

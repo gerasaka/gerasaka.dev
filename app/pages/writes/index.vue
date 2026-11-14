@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+  definePageMeta({ layout: 'section', section: 'writes' });
+
   const { data: posts } = await useAsyncData('writes-list', () =>
     queryCollection('writes').order('date', 'DESC').all(),
   );
@@ -14,14 +16,7 @@
     <div class="container-main page">
       <FadeIn>
         <FadeItem>
-          <NuxtLink to="/" class="btn btn-quiet">
-            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
-            Back
-          </NuxtLink>
-        </FadeItem>
-
-        <FadeItem>
-          <h1 class="text-title mt-12">{{ title }}</h1>
+          <h1 class="text-title">{{ title }}</h1>
         </FadeItem>
         <FadeItem>
           <p class="text-subtitle mt-2">{{ description }}</p>

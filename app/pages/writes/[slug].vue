@@ -1,6 +1,8 @@
 <script lang="ts" setup>
   import { formatReadingTime } from '~/writes/reading-time';
 
+  definePageMeta({ layout: 'section', section: 'writes' });
+
   const route = useRoute();
 
   const { data: post } = await useAsyncData(`writes-${route.path}`, () =>
@@ -22,11 +24,6 @@
 <template>
   <main class="min-h-svh">
     <article class="container-main page">
-      <NuxtLink to="/writes" class="btn btn-quiet">
-        <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
-        All posts
-      </NuxtLink>
-
       <template v-if="post">
         <span class="text-caption flex items-center mt-12">
           <p>{{ formatDate(post.date) }}</p>

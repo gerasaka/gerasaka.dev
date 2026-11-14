@@ -4,6 +4,8 @@
   import { EXAMPLE_INPUT } from '~/xml-formatter/example';
   import XmlNodeView from '~/xml-formatter/XmlNodeView.vue';
 
+  definePageMeta({ layout: 'section', section: 'tools' });
+
   const title = 'XML Formatter';
   const description = 'Unescape and prettify XML logs. Runs entirely in browser.';
 
@@ -40,13 +42,6 @@
   <main class="min-h-svh">
     <div class="container-wide page">
       <FadeIn>
-        <FadeItem>
-          <NuxtLink to="/" class="btn btn-quiet">
-            <Icon name="solar:arrow-left-line-duotone" class="mt-0.5 size-3.5" />
-            Tools
-          </NuxtLink>
-        </FadeItem>
-
         <FadeItem>
           <h1 class="text-title mt-12">XML Formatter</h1>
         </FadeItem>
