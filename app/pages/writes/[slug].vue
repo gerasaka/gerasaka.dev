@@ -5,6 +5,7 @@
   definePageMeta({ layout: 'section', section: 'writes' });
 
   const route = useRoute();
+  const site = useAppConfig().site;
 
   const { data: post } = await useAsyncData(`writes-${route.path}`, () =>
     queryCollection('writes').path(route.path).first(),
@@ -18,6 +19,9 @@
     computed(() => ({
       title: post.value?.title ?? '',
       description: post.value?.description ?? '',
+      image: post.value?.cover
+        ? { url: `${site.url}${post.value.cover}`, alt: `Cover image for ${post.value.title}` }
+        : undefined,
     })),
   );
 </script>
@@ -26,8 +30,18 @@
   <main class="min-h-svh [timeline-scope:--article]">
     <article class="container-main page">
       <FadeIn v-if="post">
+        <FadeItem v-if="post.cover">
+          <img
+            :src="post.cover"
+            alt=""
+            width="1200"
+            height="630"
+            fetchpriority="high"
+            class="mt-12 block aspect-1200/630 w-full rounded-md object-cover"
+          />
+        </FadeItem>
         <FadeItem>
-          <span class="text-caption flex items-center mt-12">
+          <span class="text-caption flex items-center" :class="post.cover ? 'mt-10' : 'mt-12'">
             <p>{{ formatDate(post.date) }}</p>
             <Icon name="ph:dot-outline-fill" class="mt-0.5 mx-1.5" />
             <p>{{ formatReadingTime(post.body) }}</p>
