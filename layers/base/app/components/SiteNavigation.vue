@@ -55,6 +55,11 @@
         </NuxtLink>
       </li>
     </ul>
+
+    <ThemeToggle
+      class="item-toggle ml-auto lg:absolute lg:bottom-8 lg:left-gutter lg:ml-0 lg:-translate-x-2"
+      :style="{ '--i': items.length }"
+    />
   </nav>
 </template>
 
@@ -64,7 +69,8 @@
   .site-navigation {
     animation: rail-in var(--transition-duration-slow) var(--ease-glide) both;
 
-    li {
+    li,
+    .item-toggle {
       animation: item-in var(--transition-duration-base) var(--ease-snap) both;
       animation-delay: calc(150ms + var(--i) * 60ms);
     }
@@ -96,7 +102,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .site-navigation,
-    .site-navigation li {
+    .site-navigation li,
+    .site-navigation .item-toggle {
       animation: none;
     }
   }
