@@ -11,5 +11,9 @@ export default defineContentConfig({
         cover: z.string().optional(),
       }),
     }),
+    playground: defineCollection({
+      type: 'page',
+      source: 'playground.md',
+    }),
   },
 });
