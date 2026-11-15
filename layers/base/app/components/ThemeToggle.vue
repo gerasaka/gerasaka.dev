@@ -23,7 +23,7 @@
 <template>
   <button
     type="button"
-    class="btn btn-ghost btn-icon fixed top-4 right-4 z-50"
+    class="btn btn-ghost btn-icon text-muted hover:text-foreground rounded-full"
     :title="title"
     @click="theme = next"
   >
