@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+  import ReadingProgressBar from '~/writes/ReadingProgressBar.vue';
   import { formatReadingTime } from '~/writes/reading-time';
 
   definePageMeta({ layout: 'section', section: 'writes' });
@@ -22,7 +23,7 @@
 </script>
 
 <template>
-  <main class="min-h-svh">
+  <main class="min-h-svh [timeline-scope:--article]">
     <article class="container-main page">
       <template v-if="post">
         <span class="text-caption flex items-center mt-12">
@@ -37,8 +38,9 @@
           <li v-for="tag in post.tags" :key="tag" class="badge">{{ tag }}</li>
         </ul>
 
-        <ContentRenderer :value="post" class="prose-write mt-10" />
+        <ContentRenderer :value="post" class="prose-write mt-10 [view-timeline:--article]" />
       </template>
     </article>
+    <ReadingProgressBar />
   </main>
 </template>
