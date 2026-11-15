@@ -25,21 +25,29 @@
 <template>
   <main class="min-h-svh [timeline-scope:--article]">
     <article class="container-main page">
-      <template v-if="post">
-        <span class="text-caption flex items-center mt-12">
-          <p>{{ formatDate(post.date) }}</p>
-          <Icon name="ph:dot-outline-fill" class="mt-0.5 mx-1.5" />
-          <p>{{ formatReadingTime(post.body) }}</p>
-        </span>
-        <h1 class="text-title mt-2">
-          {{ post.title }}
-        </h1>
-        <ul v-if="post.tags?.length" class="mt-4 flex flex-wrap gap-2">
-          <li v-for="tag in post.tags" :key="tag" class="badge">{{ tag }}</li>
-        </ul>
+      <FadeIn v-if="post">
+        <FadeItem>
+          <span class="text-caption flex items-center mt-12">
+            <p>{{ formatDate(post.date) }}</p>
+            <Icon name="ph:dot-outline-fill" class="mt-0.5 mx-1.5" />
+            <p>{{ formatReadingTime(post.body) }}</p>
+          </span>
+        </FadeItem>
+        <FadeItem>
+          <h1 class="text-title mt-2">
+            {{ post.title }}
+          </h1>
+        </FadeItem>
+        <FadeItem v-if="post.tags?.length">
+          <ul class="mt-4 flex flex-wrap gap-2">
+            <li v-for="tag in post.tags" :key="tag" class="badge">{{ tag }}</li>
+          </ul>
+        </FadeItem>
 
-        <ContentRenderer :value="post" class="prose-write mt-10 [view-timeline:--article]" />
-      </template>
+        <FadeItem>
+          <ContentRenderer :value="post" class="prose-write mt-10 [view-timeline:--article]" />
+        </FadeItem>
+      </FadeIn>
     </article>
     <ReadingProgressBar />
   </main>
