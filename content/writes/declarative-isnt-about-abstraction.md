@@ -2,6 +2,7 @@
 title: "Declarative Isn't About Abstraction"
 description: Here's how I actually understand declarative code. It's about where a value is described, not how much code you hide.
 date: 2026-08-2
+cover: /covers/declarative-isnt-about-abstraction.jpg
 tags:
   - opinion
   - fundamentals

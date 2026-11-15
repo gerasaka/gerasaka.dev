@@ -11,6 +11,14 @@
       kind: 'Web',
       stack: ['Vue'],
     },
+    {
+      name: 'Cover Generator',
+      description:
+        'Blog post cover generator, for personal use. Exports a JPEG for the page and social previews.',
+      link: { type: 'internal', to: '/cover-generator' },
+      kind: 'Web',
+      stack: ['Vue', 'SVG'],
+    },
   ];
 
   const title = 'Tools';
