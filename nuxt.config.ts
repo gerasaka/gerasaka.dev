@@ -24,11 +24,12 @@ export default defineNuxtConfig({
   routeRules: {
     '/writes': { prerender: true },
     '/games': { prerender: true },
+    '/labs': { prerender: true },
   },
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/writes', '/games', '/design'],
+      routes: ['/writes', '/games', '/labs', '/design'],
     },
   },
   content: {
