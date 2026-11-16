@@ -9,7 +9,7 @@ const FAVICONS = {
 type FaviconName = keyof typeof FAVICONS;
 
 const ROUTE_OVERRIDES: { prefix: string; icon: FaviconName }[] = [
-  { prefix: '/games', icon: 'game' },
+  { prefix: '/games/', icon: 'game' },
 ];
 
 export function useThemeFavicon() {
@@ -24,7 +24,8 @@ export function useThemeFavicon() {
         href: () => {
           if (import.meta.dev) return FAVICONS.dev;
 
-          const override = ROUTE_OVERRIDES.find(({ prefix }) => route.path.startsWith(prefix));
+          const path = route.path.replace(/\/+$/, '');
+          const override = ROUTE_OVERRIDES.find(({ prefix }) => path.startsWith(prefix));
           return override ? FAVICONS[override.icon] : FAVICONS[theme.value];
         },
       },
