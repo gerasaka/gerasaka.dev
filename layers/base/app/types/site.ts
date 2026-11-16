@@ -1,5 +1,5 @@
 export type SiteKey = 'main' | 'tools';
-export type SectionKey = 'writes' | 'games' | 'tools';
+export type SectionKey = 'writes' | 'games' | 'labs' | 'tools';
 
 declare module '#app' {
   interface PageMeta {

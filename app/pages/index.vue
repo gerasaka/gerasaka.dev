@@ -29,6 +29,7 @@
   const sections = [
     { label: 'Writes', url: '/writes' },
     { label: 'Games', url: '/games' },
+    { label: 'Labs', url: '/labs' },
     { label: 'Tools', url: 'https://tools.gerasaka.dev' },
   ];
 

@@ -14,6 +14,7 @@
   const SECTIONS: { key: SectionKey; label: string; site: SiteKey; path: string }[] = [
     { key: 'writes', label: 'Writes', site: 'main', path: '/writes' },
     { key: 'games', label: 'Games', site: 'main', path: '/games' },
+    { key: 'labs', label: 'Labs', site: 'main', path: '/labs' },
     { key: 'tools', label: 'Tools', site: 'tools', path: '/' },
   ];
 
