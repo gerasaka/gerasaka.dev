@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       script: [
         {
           // Runs before first paint to prevent FOUC
-          innerHTML: `try{var t=localStorage.getItem('theme');if(['light','dark','sepia'].includes(t))document.documentElement.dataset.theme=t}catch(e){}`,
+          innerHTML: `try{var m=document.cookie.match(/(?:^|; )theme=([^;]*)/);var t=m&&decodeURIComponent(m[1]);if(['light','dark','sepia'].includes(t))document.documentElement.dataset.theme=t}catch(e){}`,
         },
       ],
     },
